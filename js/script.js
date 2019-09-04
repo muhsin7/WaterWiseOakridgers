@@ -4,7 +4,7 @@ $(function(){
     type:"GET",
     url:"https://pledge-counter.herokuapp.com/api/main/getCount",
     success:function(data){
-        console.log(data)
+        $("#pledge-counter").html(data)
     },
     error:function(data){
         console.log(data)
