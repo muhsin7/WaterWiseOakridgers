@@ -2,9 +2,7 @@
   <html>
   <title>Water Conservation</title>
   <link rel="shortcut icon" type="image/png" href="Images/Logo.png"/>
-  <link rel="shortcut icon" type="image/png" href="Images/Logo.png"/>
   <script src="js/jquery.js" charset="utf-8"></script>
-  <script src="js/script.js" charset="utf-8"></script>
     <head>
     <div>
         <div id="modelCalc" class="modal bottom-sheet">
@@ -13,9 +11,6 @@
                   <h2>Water Consumtion Calculator</h2>
               </center>
             </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
         </div>
     </div>
 
@@ -23,6 +18,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/nord-colours.css" />
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -58,7 +54,7 @@ background-image: url(Images\water_hose.png);
 
     </head>
 
-    <body style = "background-color: none;">
+    <body class="nord-lightgrey">
       <style media="screen">
         .pledge-container {
           display:none
@@ -75,43 +71,54 @@ $(document).ready(function(){
 
       <div class="parallax-container">
             <div class="parallax"><img src="Images/water_hose.png"></div>
-            <div class="container">
-              <div class="" style = "width: inherit; margin-left: 97%; margin-top: 28%;">
-                <img src='Images/oak.png' style="width:130px;height:130px;"/>
-                <img src='Images/Logo.png' class="offset-s10 right-align" style="width:130px;height:130px;"/>
-              </div>
-            </div>
       </div>
 
 
-
+    <div class="container">
+        <div class="row">
+            <div>
+              <img src='Images/oak.png'/>
+              <img src='Images/Logo.png' style="width:20%;height:20%;" class="right-align"/>
+            </div>
+        </div>
+    </div>
 
 
         <div class="container">
-            <div class="row" style = "margin-top: 0%">
-                <div class="col s12 offset-s1" style="margin-left: 18.5%; margin-bottom: 8%;">
-                    <h1 style = "font-size: 100px;">Why Save Water?</h1>
+            <div class="row">
+                    <h1>Why Save Water?</h1>
                     <h6>Clean, fresh water is a limited resource. With all the severe droughts happening in the world, the limited supply of fresh water is becoming one of our most precious resources. Every person on earth needs water to survive. Without it, many of us would get sick and even result in death. While almost 70% of the Earth is made up of water, many parts of the world suffer from clean water shortage. Conserving water is important because it keeps water pure and clean while protecting the environment.</h6>
-                </div>
+            </div>
         </div>
 
-                <div class="container">
-                    <div class="row">
-                        <h1>Take a pledge to save water!</h1>
-                        <h5 class="pledge-container">A total of <span class="pledge-counter"></span> people have taken the pledge. Are you next?</h5>
-                        <a class="waves-effect waves-light btn-large pulse" href = "https://docs.google.com/forms/d/e/1FAIpQLSfRR_-gj_PsL7oRdu-3q0NILBimKcj3Nhffkxck5nuhYqbg1w/viewform">Pledge Now!</a>
-                    </div>
+        <div class="divider"></div>
+
+        <div class="container">
+            <div class="row">
+                <h1>Take a pledge to save water!</h1>
+                <h5 class="pledge-container">A total of <span class="pledge-counter"></span> people have taken the pledge. Are you next?</h5>
+                <a class="waves-effect waves-light btn-large pulse" href = "https://docs.google.com/forms/d/e/1FAIpQLSfRR_-gj_PsL7oRdu-3q0NILBimKcj3Nhffkxck5nuhYqbg1w/viewform">Pledge Now!</a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+        <br /><br />
+        <div class="container">
+            <div class="row">
+                <div>
+                  <center>
+                      <img src = "Images\000.png" alt = "Water Consumption Infographic" width="78%">
+                  </center>
                 </div>
+            </div>
+        </div>
+        <br /><br />
 
+        <div class="divider"></div>
 
-
-              <div class ="col s9">
-                  <img src = "Images\000.png" alt = "Water Consumption Infographic" width="78%" style="margin-left: 26.7%;">
-              </div>
-
-              </div>
-
-                <div class="col s5 offset-s6" style = "margin-left: 20.5%;">
+        <div class="container">
+            <div class="row">
+                <div>
                     <h1>Water Consumption Calculator</h1>
                     <h5>To calculate your daily water usage Click on the button below!</h5>
                     <a class="waves-effect waves-light btn-large modal-trigger" href="#modalCalc">Calculator</a>
@@ -121,31 +128,14 @@ $(document).ready(function(){
 
 
 
+
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 
     <footer class="page-footer black" style="margin-top:20px">
         <div class="container">
-            <!-- <div class="row">
-                <div class="col s12">
-                    <h5 class="white-text">Contact Details</h5>
-                     <p class="grey-text text-lighten-4">Send any queries over to <a href="mailto:bangalorejmun@oakridge.in" target="_blank"> bangalorejmun@oakridge.in</a> </p>
-                </div>
-            </div> -->
-            <!-- <div class="row">
-                <div class="col s12">
-                    <p class="grey-text text-lighten-4"><a href="http://www.oakridge.in/">Oakridge Website</a></p>
-                </div>
-            </div> -->
             <div class="row" style="margin-bottom: 0px;">
-                <!-- <div class="footer-copyright">
-                    <div class="col s7">
-                        <a class="grey-text text-lighten-4" href=""><i class="material-icons">copyright</i>2019 Bangalore Junior MUN</a>
-                    </div>
-
-                </div> -->
-
                 <div class="col s5 right">
                     Developed by <a href="https://github.com/muhsin7" target="_blank">Muhsin7</a>, <a href="https://github.com/Teminix" target="_blank">Teminix</a> and <a href="https://github.com/Chanmanstanflan" target="_blank">Chanmanstanflan</a>
                     <br />
