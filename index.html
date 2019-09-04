@@ -1,9 +1,94 @@
 <!DOCTYPE html>
-<html>
+  <html>
+  <link rel="shortcut icon" type="image/png" href="Images/Logo.png"/>
     <head>
-        <title>Water Conservation</title>
+    <div>
+        <div id="modelCalc" class="modal bottom-sheet">
+            <div class="modal-content">
+              <center>
+                  <h2>Water Consumtion Calculator</h2>
+              </center>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+    </div>
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo"><img src = "Images/Logo.png" style="width:10%; height:10%;"/></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li class ="active"><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="posters.html">Posters</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+        </nav>
     </head>
+
     <body>
-        
+
+        <div class="container">
+            <div class="row">
+                <img src='Images/oak.png' style=""/>
+                <img src='Images/Logo.png' class="offset-s10 right-align" style="width:20%;height:20%;"/>
+
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h1>Take a pledge to save water!</h1>
+                <a class="waves-effect waves-light btn-large pulse" href = "https://docs.google.com/forms/d/e/1FAIpQLSfRR_-gj_PsL7oRdu-3q0NILBimKcj3Nhffkxck5nuhYqbg1w/viewform">Pledge Now!</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col s4 offset-s1">
+                    <h1>Why Save Water?</h1>
+                    <h6>Clean, fresh water is a limited resource. With all the severe droughts happening in the world, the limited supply of fresh water is becoming one of our most precious resources. Every person on earth needs water to survive. Without it, many of us would get sick and even result in death. While almost 70% of the Earth is made up of water, many parts of the world suffer from clean water shortage. Conserving water is important because it keeps water pure and clean while protecting the environment.</h6>
+                </div>
+
+                <div class="col s4 offset-s6">
+                    <h1>Water Consumption Calculator</h1>
+                    <h5>To calculate your daily water usage Click on the button below!</h5>
+                    <a class="waves-effect waves-light btn-large modal-trigger" href="#modalCalc">Calculator</a>
+                </div>
+            </div>
+        </div>
+
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
-</html>
+    <script>
+    // INITIALIZING MATERIALIZE ELEMENTS
+
+    ////////////////////////////
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+    $('.modal').modal();
+    });
+    ////////////////////////////
+
+
+    </script>
+  </html>
