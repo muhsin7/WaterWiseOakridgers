@@ -1,0 +1,37 @@
+html,body {
+  height:100%;
+  margin:0;
+  padding:0;
+  font-family:arial;
+}
+a {
+  text-decoration: none;
+}
+#kibira-nav {
+  display:flex;
+  padding-right: 50px;
+  align-items: center;
+  height: 10%;
+  max-height:10%;
+}
+#kibira-nav .item {
+  display:inline-block;
+  margin:0;
+  padding:0;
+  height:100%;
+}
+#kibira-nav .item img {
+  height:100%;
+}
+#kibira-nav .item a {
+  display:block;
+  padding: auto 30px;
+  color:black;
+  transition:0.5s;
+  font-size:20px;
+  margin:0
+}
+#kibira-nav .item a:hover {
+  background-color:black;
+  color:white;
+}
