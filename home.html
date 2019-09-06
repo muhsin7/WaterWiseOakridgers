@@ -1,178 +1,243 @@
 <!DOCTYPE html>
-  <html>
-  <title>Water Conservation</title>
-  <link rel="shortcut icon" type="image/png" href="Images/Logo.png"/>
-  <script src="js/jquery.js" charset="utf-8"></script>
-  <script src="js/script.js" charset="utf-8"></script>
-    <head>
-    <div>
-        <div id="modelCalc" class="modal bottom-sheet">
-            <div class="modal-content">
-              <center>
-                  <h2>Water Consumption Calculator</h2>
-              </center>
-            </div>
-        </div>
+<html>
+<title>Water Conservation</title>
+<link rel="shortcut icon" type="image/png" href="Images/Logo.png" />
+<script src="js/jquery.js" charset="utf-8"></script>
+<script src="js/script.js" charset="utf-8"></script>
+
+<head>
+  <div>
+    <div id="modelCalc" class="modal bottom-sheet">
+      <div class="modal-content">
+        <center>
+          <h2>Water Consumption Calculator</h2>
+        </center>
+      </div>
     </div>
+  </div>
+  <style>
+    h1 {
+      background-color: #FDC02D;
+      color: #003255;
+      font-style: italic;
+    }
+  </style>
 
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <link type="text/css" rel="stylesheet" href="css/nord-colours.css" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/nord-colours.css" />
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
-          <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src = "Images/Logo.png" style="width:10%; height:10%;"/></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#work">Student Work</a></li>
-              <li><a href="#calculator">Calculator</a></li>
-              <!-- <li><a href="blog.html">Blog</a></li> -->
-            </ul>
-          </div>
-        </nav>
+  <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#work">Student Work</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <!-- <li><a href="blog.html">Blog</a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+
+<style media="screen">
+
+.niceimg{
+
+}
+
+.overlay {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: .5s ease;
+background-color: #008CBA;
+}
+
+.overlaytext {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+</style>
+
+
 
 </head>
-    <body class="nord-lightgrey">
-      <style media="screen">
-        .pledge-container {
-          display:none
-        }
-      </style>
 
-<script type="text/javascript">
-$(document).ready(function(){
-  $('.parallax').parallax();
-});
+<body class="nord-lightgrey">
+  <style media="screen">
+    .pledge-container {
+      display: none
+    }
+  </style>
 
 
-$(document).ready(function(){
-    $('.carousel').carousel();
-  });
 
-  $('.carousel.carousel-slider').carousel({
-      fullWidth: true,
-      indicators: true,
-      dist: 0
-    });
-
-
-</script>
-
-
-      <div class="parallax-container" style="height: 600px;">
-            <div class="parallax"><img src="Images/bg.jpg" style="width: 50%;"></div>
-            <div class="container" style="position: relative; top: 35vh; right: 15vh;">
-                        <div class="row">
-                            <div class="col s12">
-                                <img width="100%" height="120%" src="Images/bg_text.png">
-                            </div>
-                        </div>
+  <div class="parallax-container" style="height: 600px;">
+    <div class="parallax"><img src="Images/bg.jpg" style="width: 50%;"></div>
+    <div class="container" style="position: relative; top: 35vh; right: 15vh;">
+      <div class="row">
+        <div class="col s12">
+          <img width="100%" height="120%" src="Images/bg_text.png">
+        </div>
       </div>
     </div>
-    <div class="container">
-        <div class="row">
+  </div>
+  <div class="container">
+    <div class="row">
 
-            <center>
-              <h6>An</h6>
-              <img src='Images/oak.png'/>
-              <h6>Initiative</h6>
-            </center>
+      <center>
+        <h6>An</h6>
+        <img src='Images/oak_hd.png' />
+        <h6>Initiative</h6>
+      </center>
+    </div>
+    <div class="row">
+      <center>
+        <div id="about"><img src='Images/Logo.png' style="width:20%;height:20%;" class="right-align" />
+      </center>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <h1>Why Save Water?</h1>
+      <h6>Clean, fresh water is a limited resource. With all the severe droughts happening in the world, the limited supply of fresh water is becoming one of our most precious resources. Every person on earth needs water to survive. Without it, many
+        of us would get sick and even result in death. While almost 70% of the Earth is made up of water, many parts of the world suffer from clean water shortage. Conserving water is important because it keeps water pure and clean while protecting
+        the environment.</h6>
+    </div>
+    <div class="divider"></div>
+    <div class="row">
+      <h1>About us</h1>
+      <h6>Water Conservation Awareness project has been taken up by students of Oakridge International Bangalore (a Nord Anglia Education School) to encourage conservation of water by doing things little differently and make our world a better place
+        to live in.
+        <br /><br />
+        We at Oakridge International strive to inculcate these values in our students as well promote their thoughts and ideas that could lead to improved better solutions.
+        <br /><br /><br />
+        <div style="text-align: right;">
+          <i>Sometimes if you want to see a change for the better, you have to take things into your own hands.
+            <br /> - Clint Eastwood</i>
         </div>
-        <div class="row">
-          <center>
-          <div id="about"><img src='Images/Logo.png' style="width:20%;height:20%;" class="right-align"/>
-          </center>
-          </div>
+      </h6>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="container">
+    <div class="row">
+      <h1>Take a pledge to save water!</h1>
+      <h5 class="pledge-container">A total of <span class="pledge-counter nord-yellow nord-darkblue-text" style="font-style: italic;"></span> people have taken the pledge. Are you next?</h5>
+      <a class="nord-darkblue waves-effect waves-light btn-large pulse" style="margin-top: 12px; z-index: 0; margin-left: 40%" href="https://forms.gle/fxPsH74jkQ8KWNUu6">Pledge Now!</a>
+      <!-- <a class="nord-darkblue waves-effect waves-light btn-large pulse" style = "margin-top: 12px; z-index: 0; margin-left: 40%" href = "#modalPLEDGE">Pledge Now!</a> -->
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <br /><br />
+
+
+  <div class="container" id="work">
+    <div class="row">
+      <h1>Student Work</h1>
+      <ul class="tabs tabs-transparent nord-darkblue">
+        <li class="tab waves-effect waves-light" style="width:49%;">
+          <a href="#posters" id="posterstab" onclick="getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
+        </li>
+        <li class="tab waves-effect waves-light" style="width:49%;">
+          <a href="#websites" id="websitestab" onclick="getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Websites</a>
+        </li>
+      </ul>
+    </div>
+    <!-- <div id="posters">
+              Posters
+            </div> -->
+    <style>
+      .carousel {
+        height: 600px;
+      }
+
+      .carousel-item img {
+        height: 600px;
+        width: auto;
+      }
+    </style>
+    <div class="row">
+      <div id="posters" style="display: none;">
+        <div class="carousel carousel-slider">
+          <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
+          <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
+          <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
+          <a class="carousel-item" href="#four!"><img src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
+          <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
         </div>
       </div>
 
-
-        <div class="container">
-            <div class="row">
-                    <h1>Why Save Water?</h1>
-                    <h6>Clean, fresh water is a limited resource. With all the severe droughts happening in the world, the limited supply of fresh water is becoming one of our most precious resources. Every person on earth needs water to survive. Without it, many of us would get sick and even result in death. While almost 70% of the Earth is made up of water, many parts of the world suffer from clean water shortage. Conserving water is important because it keeps water pure and clean while protecting the environment.</h6>
-            </div>
-            <div class="divider"></div>
-            <div class="row">
-                <h1>About us</h1>
-                <h6>Water Conservation Awareness project has been taken up by students of Oakridge International Bangalore (a Nord Anglia Education School) to encourage conservation of water by doing things little differently and make our world a better place to live in.
- <br /><br />
-We at Oakridge International strive to inculcate these values in our students as well promote their thoughts and ideas that could lead to improved  better solutions.
- <br /><br /><br />
-<div style="text-align: right;">
-  <i>Sometimes if you want to see a change for the better, you have to take things into your own hands.
-      <br /> - Clint Eastwood</i>
-</div>
-</h6>
-            </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="container">
-            <div class="row">
-                <h1>Take a pledge to save water!</h1>
-                <h5 class="pledge-container">A total of <span class="pledge-counter nord-yellow nord-darkblue-text" style="font-style: italic;"></span> people have taken the pledge. Are you next?</h5>
-                <a class="nord-darkblue waves-effect waves-light btn-large pulse" style = "margin-top: 12px; z-index: 0; margin-left: 40%" href = "https://forms.gle/fxPsH74jkQ8KWNUu6">Pledge Now!</a>
-                <!-- <a class="nord-darkblue waves-effect waves-light btn-large pulse" style = "margin-top: 12px; z-index: 0; margin-left: 40%" href = "#modalPLEDGE">Pledge Now!</a> -->
-            </div>
-        </div>
-
-        <div class="divider"></div>
-        <br /><br />
-
-
-        <div class="container" id="work">
-          <div class="row">
-            <h1>Student Work</h1>
-            <ul class="tabs tabs-transparent nord-darkblue">
-              <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#posters" id = "posterstab" onclick = "getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
-              </li>
-              <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#websites" id = "websitestab" onclick = "getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Websites</a>
-              </li>
-            </ul>
-          </div>
-            <!-- <div id="posters">
-              Posters
-            </div> -->
-          <div class = "row">
-            <div id = "posters" style = "display: none;">
-                <div class="carousel carousel-slider">
-                     <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png" ></a>
-                     <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
-                     <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
-                     <a class="carousel-item" href="#four!"><img src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
-                     <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
-                 </div>
-            </div>
-
-            <!-- <div id="websites">
+      <!-- <div id="websites">
               Websites
             </div> -->
 
+<<<<<<< HEAD
           <div id = "websites" style = "display: none;">
             <h6>Below are a few of the websites that our students have created to spread awareness about campaigns and the cause:</h6>
 
             <table>
               <tr>
-                <td><a href = "https://chakkradarisonline.wixsite.com/mysite" target = "_blank"><img src = "Images\work-website-ss.PNG" style = "max-height: 300px; border-radius: 8px;"></a>
+                <td>
+<a href = "https://chakkradarisonline.wixsite.com/mysite" target = "_blank"><div class="niceimg"><img src = "Images\work-website-ss.PNG" style = "max-height: 300px; border-radius: 8px;">
+<div class="overlay">
+  <div class="overlaytext">
+    https://chakkradarisonline.wixsite.com/mysite
+  </div>
+</div>
+</div>
+</a>
             </br>
           </br></td>
-            <td><a href = "https://anisubsud.wixsite.com/mysite" target = "_blank"><img src = "Images\work-website-ss(1).PNG" style = "max-height: 300px; border-radius: 8px;"></a>
+            <td><a href = "https://anisubsud.wixsite.com/mysite" target = "_blank"><div class ="niceimg"><img src = "Images\work-website-ss(1).PNG" style = "max-height: 300px; border-radius: 8px;">
+              <div class="overlay">
+                <div class="overlaytext">
+                  https://anisubsud.wixsite.com/mysite
+                </div>
+              </div>
+              </div>
+            </a>
             <br>
             <br></td>
           </tr>
 
           <tr>
-            <td><a href = "https://kaashvi1303.wixsite.com/mysite" target = "_blank"><img src = "Images\work-website-ss(2).PNG" style = "max-height: 300px; width: 596px; border-radius: 8px;"></a>
+            <td><a href = "https://kaashvi1303.wixsite.com/mysite" target = "_blank"><div class ="niceimg"><img src = "Images\work-website-ss(2).PNG" style = "max-height: 300px; width: 596px; border-radius: 8px;">
+              <div class="overlay">
+                <div class="overlaytext">
+                  https://kaashvi1303.wixsite.com/mysite
+                </div>
+              </div>
+              </div>
+            </a>
             <br>
             <br></td>
             <td><a href = "https://dyutimanshiv.wixsite.com/website-1" target = "_blank"><img src = "Images\work-website-ss(3).PNG" style = "height: 290px; width: 596px; border-radius: 8px;"></a>
@@ -183,100 +248,158 @@ We at Oakridge International strive to inculcate these values in our students as
             <a href = "https://rishick36.wixsite.com/waterforall" target = "_blank"><img src = "Images\work-website-ss(4).PNG" style = "max-height: 300px; width: 596px; border-radius: 8px;"></a>
             <br>
             <br></td>
+=======
+            <style>
+                #websites img{
+                  width: 50% !important;
+                  height: auto !important;
+                }
+            </style>
+      <div id="websites" style="display: none;">
+        <h6>Below are a few of the websites that our students have created to spread awareness about campaigns and the cause:</h6>
+
+        <table class="websites">
+          <tr>
+            <center>
+              <td><a href="https://chakkradarisonline.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss.PNG" style="max-height: 300px; border-radius: 8px;"></a>
+                </br>
+                </br></td>
+              <td><a href="https://anisubsud.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(1).PNG" style="max-height: 300px; border-radius: 8px;"></a>
+                <br>
+                <br></td>
+            </center>
+          </tr>
+
+          <tr>
+            <center>
+              <td><a href="https://kaashvi1303.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(2).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+                <br>
+                <br></td>
+              <td><a href="https://dyutimanshiv.wixsite.com/website-1" target="_blank"><img src="Images\work-website-ss(3).PNG" style="height: 290px; width: 596px; border-radius: 8px;"></a>
+                <br>
+                <br></td>
+            </center>
+          </tr>
+
+          <tr>
+          <center>
+>>>>>>> 3237a42f8f82074c4ad8c0ff25c2c7a37b833938
             <td>
-            <a href = "https://shishirgullipalli.wixsite.com/waterconservation-1" target = "_blank"><img src = "Images\work-website-ss(5).PNG" style = "max-height: 300px; width: 596px; border-radius: 8px;"></a>
-            <br>
-            <br></td></tr>
-          </table>
+              <a href="https://rishick36.wixsite.com/waterforall" target="_blank"><img src="Images\work-website-ss(4).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+              <br>
+              <br></td>
+            <td>
+              <a href="https://shishirgullipalli.wixsite.com/waterconservation-1" target="_blank"><img src="Images\work-website-ss(5).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+              <br>
+              <br></td>
+          </center>
+          </tr>
+        </table>
 
 
-          </div>
+      </div>
 
 
-          </div>
-        </div>
-<br>
-<br>
+    </div>
+  </div>
+  <br>
+  <br>
 
 
-        <br /><br />
+  <br /><br />
 
-        <div class="divider"></div>
+  <div class="divider"></div>
 
-        <div class="container">
-          <div class="row">
-              <h1>Add Contributions</h1>
-              <h4>Let us know about your ideas to save water!</h4>
-              <h4><i><a href="https://padlet.com/chetna_kachhwaha2/7to2i3uszdlf" class="btn-large nord-darkblue waves-effect waves-light"target="_blank">Include your ideas in the Padlet</a></i></h4>
-          </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <h1>Add Contributions</h1>
+      <h4>Let us know about your ideas to save water!</h4>
+      <h4><i><a href="https://padlet.com/chetna_kachhwaha2/7to2i3uszdlf" class="btn-large nord-darkblue waves-effect waves-light" target="_blank">Include your ideas in the Padlet</a></i></h4>
+    </div>
+  </div>
 
-        <dic class="divider"></dic>
+  <dic class="divider"></dic>
 
-        <div class="container" id="calculator">
-            <div class="row">
-                <div>
-                    <h1>Water Consumption Calculator</h1>
-                    <h5>To calculate your daily water usage Click on the button below!</h5>
-                    <a class="nord-darkblue waves-effect waves-light btn-large modal-trigger" href="Water_Calc_v3.html">Calculator</a>
-                </div>
-            </div>
-        </div>
-
-
-
-
-      <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
-
-    <footer class="page-footer black" style="margin-top:20px">
-        <div class="container">
-            <div class="row" style="margin-bottom: 0px;">
-                <div class="col s5 right">
-                    Developed by <a href="https://github.com/muhsin7" target="_blank">Muhsin7</a>, <a href="https://github.com/Teminix" target="_blank">Teminix</a> and <a href="https://github.com/Chanmanstanflan" target="_blank">Chanmanstanflan</a>
-                    <br />
-                    <br />
-                </div>
-            </div>
-        </div>
-    </footer>
+  <div class="container" id="calculator">
+    <div class="row">
+      <div>
+        <h1>Water Consumption Calculator</h1>
+        <h5>To calculate your daily water usage Click on the button below!</h5>
+        <a class="nord-darkblue waves-effect waves-light btn-large modal-trigger" href="Water_Calc_v3.html">Calculator</a>
+      </div>
+    </div>
+  </div>
 
 
 
 
-    <script>
-    // INITIALIZING MATERIALIZE ELEMENTS
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
 
-    ////////////////////////////
-    document.addEventListener('DOMContentLoaded', function() {
+<footer class="page-footer black" style="margin-top:20px">
+  <div class="container">
+    <div class="row" style="margin-bottom: 0px;">
+      <div class="col s5 right">
+        Developed by <a href="https://github.com/muhsin7" target="_blank">Muhsin7</a>, <a href="https://github.com/Teminix" target="_blank">Teminix</a> and <a href="https://github.com/Chanmanstanflan" target="_blank">Chanmanstanflan</a>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script>
+  // INITIALIZING MATERIALIZE ELEMENTS
+
+  ////////////////////////////
+  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options);
-    });
+  });
 
-    // Or with jQuery
+  // Or with jQuery
 
-    $(document).ready(function(){
+  $(document).ready(function() {
     $('.modal').modal();
   });
-    ////////////////////////////
+  ////////////////////////////
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems, options);
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
 
-    // Or with jQuery
-
-
-    var instance = M.Tabs.init(el, options);
-
-    // Or with jQuery
-
-    $(document).ready(function(){
-      $('.tabs').tabs();
-    });
+  // Or with jQuery
 
 
-    </script>
-  </html>
+  var instance = M.Tabs.init(el, options);
+
+  // Or with jQuery
+
+  $(document).ready(function() {
+    $('.tabs').tabs();
+  });
+
+
+
+  $(document).ready(function() {
+    $('.parallax').parallax();
+  });
+
+
+  $(document).ready(function() {
+    $('.carousel').carousel();
+  });
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true,
+    dist: 0
+  });
+</script>
+
+</html>
