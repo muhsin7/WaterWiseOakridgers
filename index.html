@@ -63,6 +63,17 @@ background-image: url(Images\water_hose.png);
 $(document).ready(function(){
   $('.parallax').parallax();
 });
+
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
+
+  $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true
+    });
+
 </script>
 
 
@@ -100,11 +111,12 @@ $(document).ready(function(){
         <br /><br />
         <div class="container" id="posters">
             <div class="row">
-                <div>
-                  <center>
-                      <img src = "Images\000.png" alt = "Water Consumption Infographic" width="78%">
-                  </center>
-                </div>
+              <div class="carousel carousel-slider">
+                <a class="carousel-item" href="#one!"><img src="Images\000.png"></a>
+                <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+                <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+                <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+              </div>
             </div>
         </div>
         <br /><br />
