@@ -5,13 +5,30 @@
     <title>Welcome</title>
     <style media="screen">
       body, html {
-        height:100%
+        height:100%;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
       }
       .height-container {
-        height:100%;
+        height:60%;
+        padding-top: 10%;
         display:flex;
         align-items: center;
         justify-content: center;
+        animation:change-padding 1s ease-out,fade-in 0.5s linear
+      }
+      @keyframes fade-in{
+        from {opacity:0}
+        to {opacity:1}
+      }
+      @keyframes change-padding {
+        from {padding-top:7%}
+        to{padding-bottom:10%}
+      }
+      .fade-in {
+        animation: fade-in 0.5s linear
+      }
+      .change-padding {
+        animation: change-padding 0.5s ease-out
       }
       .img-container img {
         height:250px;
@@ -22,17 +39,53 @@
       .img-container:first-child {
         border-right:5px #8F8B86 solid
       }
+      .hidden {
+        display:none
+      }
+      .fade {
+        opacity:0
+      }
+      #redirect,#redirecting {
+        transition:0.5s
+      }
     </style>
-    <link rel="stylesheet" href="/css/nord-colours.css">
+    <script type="text/javascript">
+      function executeRedirect(){
+        let redir = document.getElementById("redirect");
+        let redirecting = document.getElementById("redirecting");
+
+        setTimeout(function(){
+          redirecting.classList.remove('fade')
+        },500)
+        setTimeout(function(){
+          redir.classList.remove('fade')
+        },1000)
+        setTimeout(function(){
+          window.location.href = "index.html"
+        },
+      2000)
+      }
+    </script>
   </head>
   <body>
-    <div class="height-container">
+    <div class="height-container" onanimationend="executeRedirect()">
       <div class="img-container">
-        <img src="Images/oak.png" alt="">
+        <img src="Images/oak_hd.png" alt="">
       </div>
       <div class="img-container">
         <img src="Images/Logo.png" alt="">
       </div>
     </div>
+    <center class="fade" id="redirecting">
+      Redirecting...
+    </center>
+    <center class="fade" id="redirect">
+      If page does not redirect, click <a href="index.html">here</a>
+    </center>
+    <script type="text/javascript">
+      window.addEventListener("load",function(){
+        console.log('test')
+      })
+    </script>
   </body>
 </html>
