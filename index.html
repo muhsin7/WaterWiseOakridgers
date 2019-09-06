@@ -60,6 +60,7 @@ $(document).ready(function(){
       indicators: true
     });
 
+
 </script>
 
 
@@ -131,33 +132,36 @@ We at Oakridge International strive to inculcate these values in our students as
             <h1>Student Work</h1>
             <ul class="tabs tabs-transparent nord-darkblue">
               <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#posters">Posters</a>
+                <a href="#posters" id = "posterstab" onclick = "getElementById('posters').style.display = 'block'">Posters</a>
               </li>
               <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#websites">Websites</a>
+                <a href="#websites" id = "websitestab">Websites</a>
               </li>
             </ul>
 
-            <div id="posters">
+            <!-- <div id="posters">
               Posters
+            </div> -->
+
+            <div id = "posters" style = "display: none; ">
+                <div class="carousel carousel-slider">
+                     <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
+                     <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
+                     <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
+                     <a class="carousel-item" href="#four!"><img src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
+                     <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
+                 </div>
             </div>
-            <div id="websites">
+
+            <!-- <div id="websites">
               Websites
-            </div>
+            </div> -->
 
           </div>
         </div>
 <br>
 <br>
-        <div class="container">
-               <div class="carousel carousel-slider">
-                 <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
-                 <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
-                 <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
-                 <a class="carousel-item" href="#four!"><img src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
-                 <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
-             </div>
-           </div>
+
 
         <br /><br />
 
