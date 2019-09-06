@@ -57,14 +57,15 @@ $(document).ready(function(){
 
   $('.carousel.carousel-slider').carousel({
       fullWidth: true,
-      indicators: true
+      indicators: true,
+      dist: 0
     });
 
 
 </script>
 
 
-      <div class="parallax-container" style="height: 500px;">
+      <div class="parallax-container" style="height: 600px;">
             <div class="parallax"><img src="Images/bg.jpg" style="width: 50%;"></div>
             <div class="container" style="position: relative; top: 35vh; right: 15vh;">
                         <div class="row">
@@ -132,20 +133,20 @@ We at Oakridge International strive to inculcate these values in our students as
             <h1>Student Work</h1>
             <ul class="tabs tabs-transparent nord-darkblue">
               <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#posters" id = "posterstab" onclick = "getElementById('posters').style.display = 'block'">Posters</a>
+                <a href="#posters" id = "posterstab" onclick = "getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
               </li>
               <li class="tab waves-effect waves-light" style="width:49%;">
-                <a href="#websites" id = "websitestab">Websites</a>
+                <a href="#websites" id = "websitestab" onclick = "getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Websites</a>
               </li>
             </ul>
-
+          </div>
             <!-- <div id="posters">
               Posters
             </div> -->
-
-            <div id = "posters" style = "display: none; ">
+          <div class = "row">
+            <div id = "posters" style = "display: none;">
                 <div class="carousel carousel-slider">
-                     <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
+                     <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png" ></a>
                      <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
                      <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
                      <a class="carousel-item" href="#four!"><img src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
@@ -171,7 +172,7 @@ We at Oakridge International strive to inculcate these values in our students as
           <div class="row">
               <h1>Add Contributions</h1>
               <h4>Let us know about your ideas to save water!</h4>
-              <h4><i><a href="https://padlet.com/chetna_kachhwaha2/7to2i3uszdlf" class="btn-large nord-darkblue waves-effect waves-light">Include your ideas in the Padlet</a></i></h4>
+              <h4><i><a href="https://padlet.com/chetna_kachhwaha2/7to2i3uszdlf" class="btn-large nord-darkblue waves-effect waves-light"target="_blank">Include your ideas in the Padlet</a></i></h4>
           </div>
         </div>
 
