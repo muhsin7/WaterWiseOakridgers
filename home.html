@@ -14,6 +14,13 @@
             </div>
         </div>
     </div>
+    <style>
+        h1 {
+          background-color: #FDC02D;
+          color: #003255;
+          font-style: italic;
+        }
+    </style>
 
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,7 +33,7 @@
 
         <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src = "Images/Logo.png" style="width:10%; height:10%;"/></a>
+            <a href="index.html" class="brand-logo"><img src = "Images/Logo.png" style="width:10%; height:10%;"/></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href="index.html">Home</a></li>
               <li><a href="#about">About Us</a></li>
@@ -45,24 +52,6 @@
         }
       </style>
 
-<script type="text/javascript">
-$(document).ready(function(){
-  $('.parallax').parallax();
-});
-
-
-$(document).ready(function(){
-    $('.carousel').carousel();
-  });
-
-  $('.carousel.carousel-slider').carousel({
-      fullWidth: true,
-      indicators: true,
-      dist: 0
-    });
-
-
-</script>
 
 
       <div class="parallax-container" style="height: 600px;">
@@ -80,7 +69,7 @@ $(document).ready(function(){
 
             <center>
               <h6>An</h6>
-              <img src='Images/oak.png'/>
+              <img src='Images/oak_hd.png'/>
               <h6>Initiative</h6>
             </center>
         </div>
@@ -143,6 +132,15 @@ We at Oakridge International strive to inculcate these values in our students as
             <!-- <div id="posters">
               Posters
             </div> -->
+          <style>
+                .carousel{
+                  height: 600px;
+                }
+                .carousel-item img{
+                  height: 600px;
+                  width: auto;
+                }
+          </style>
           <div class = "row">
             <div id = "posters" style = "display: none;">
                 <div class="carousel carousel-slider">
@@ -241,6 +239,23 @@ We at Oakridge International strive to inculcate these values in our students as
     $(document).ready(function(){
       $('.tabs').tabs();
     });
+
+
+
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+
+
+    $(document).ready(function(){
+        $('.carousel').carousel();
+      });
+
+      $('.carousel.carousel-slider').carousel({
+          fullWidth: true,
+          indicators: true,
+          dist: 0
+        });
 
 
     </script>
