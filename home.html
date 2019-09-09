@@ -6,15 +6,6 @@
 <script src="js/script.js" charset="utf-8"></script>
 
 <head>
-  <div>
-    <div id="modelCalc" class="modal bottom-sheet">
-      <div class="modal-content">
-        <center>
-          <h2>Water Consumption Calculator</h2>
-        </center>
-      </div>
-    </div>
-  </div>
   <style>
     h1 {
       background-color: #FDC02D;
@@ -150,6 +141,113 @@
 
   <div class="divider"></div>
 
+
+    <div class="container" id="work">
+      <div class="row">
+        <h1>Student's Work</h1>
+        <ul class="tabs tabs-transparent nord-darkblue">
+          <li class="tab waves-effect waves-light" style="width:49%;">
+            <a href="#posters" id="posterstab" onclick="getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
+          </li>
+          <li class="tab waves-effect waves-light" style="width:49%;">
+            <a href="#websites" id="websitestab" onclick="getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Web page</a>
+          </li>
+        </ul>
+      </div>
+      <style>
+        .carousel {
+          height: 1600px;
+        }
+
+        .carousel-item img {
+          height: 1600px;
+          width: auto;
+        }
+      </style>
+      <div class="row">
+        <div id="posters">
+          <div class="carousel carousel-slider">
+            <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
+            <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
+            <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
+            <a class="carousel-item" href="#four!"><img style = "height: 700px"src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
+            <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
+          </div>
+        </div>
+              <style>
+                  #websites img{
+                    width: 50% !important;
+                    height: auto !important;
+                  }
+              </style>
+        <div id="websites" style="display: none;">
+          <h6>Below are a few of the websites that our students have created to spread awareness about campaigns and the cause:</h6>
+
+          <table class="websites">
+            <tr>
+              <center>
+                <td><div class="niceimg"><a href="https://chakkradarisonline.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss.PNG" style="max-height: 300px; border-radius: 8px;">  <div class="overlay">
+                    <div class="overlaytext">
+                      https://chakkradarisonline.wixsite.com/mysite
+                    </div>
+                  </div>
+                  </div></a>
+                  </br>
+                  </br></td>
+                <td><a href="https://anisubsud.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(1).PNG" style="max-height: 300px; border-radius: 8px;"></a>
+                  <br>
+                  <br></td>
+              </center>
+            </tr>
+
+            <tr>
+              <center>
+                <td><a href="https://kaashvi1303.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(2).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+                  <br>
+                  <br></td>
+                <td><a href="https://dyutimanshiv.wixsite.com/website-1" target="_blank"><img src="Images\work-website-ss(3).PNG" style="height: 290px; width: 596px; border-radius: 8px;"></a>
+                  <br>
+                  <br></td>
+              </center>
+            </tr>
+
+            <tr>
+            <center>
+              <td>
+                <a href="https://rishick36.wixsite.com/waterforall" target="_blank"><img src="Images\work-website-ss(4).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+                <br>
+                <br></td>
+              <td>
+                <a href="https://shishirgullipalli.wixsite.com/waterconservation-1" target="_blank"><img src="Images\work-website-ss(5).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
+                <br>
+                <br></td>
+            </center>
+            </tr>
+          </table>
+
+
+        </div>
+
+
+      </div>
+    </div>
+    <br />
+    <br />
+
+<div class="divider"></div>
+
+<div class="container" id="calculator">
+  <div class="row">
+    <div>
+      <h1>Water Consumption Calculator</h1>
+      <h5>To calculate your daily water usage Click on the button below!</h5>
+      <a class="nord-darkblue waves-effect waves-light btn-large modal-trigger" href="Water_Calc_v3.html">Calculator</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
   <div class="container">
     <div class="row">
       <h1>Take a pledge to save water!</h1>
@@ -160,165 +258,8 @@
   </div>
 
   <div class="divider"></div>
-  <br /><br />
+  <br />
 
-
-  <div class="container" id="work">
-    <div class="row">
-      <h1>Student's Work</h1>
-      <ul class="tabs tabs-transparent nord-darkblue">
-        <li class="tab waves-effect waves-light" style="width:49%;">
-          <a href="#posters" id="posterstab" onclick="getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
-        </li>
-        <li class="tab waves-effect waves-light" style="width:49%;">
-          <a href="#websites" id="websitestab" onclick="getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Web page</a>
-        </li>
-      </ul>
-    </div>
-    <!-- <div id="posters">
-              Posters
-            </div> -->
-    <style>
-      .carousel {
-        height: 1600px;
-      }
-
-      .carousel-item img {
-        height: 1600px;
-        width: auto;
-      }
-    </style>
-    <div class="row">
-      <div id="posters">
-        <div class="carousel carousel-slider">
-          <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
-          <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
-          <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
-          <a class="carousel-item" href="#four!"><img style = "height: 700px"src="Images\Posters\INFOGRAPHIC DESIGN-FACTS ON WATER - Pradhyum Balaji_page-0001.jpg"></a>
-          <a class="carousel-item" href="#five!"><img src="Images\Posters\Ariav Thomas.png"></a>
-        </div>
-      </div>
-
-      <!-- <div id="websites">
-              Websites
-            </div> -->
-
-            <!-- <style>
-                #websites img{
-                  width: 50% !important;
-                  height: auto !important;
-                }
-            </style>
-      <div id="websites" style="display: none;">
-        <h6>Below are a few of the websites that our students have created to spread awareness about campaigns and the cause:</h6>
-
-        <table class="websites">
-          <tr>
-            <center>
-              <td><a href = "https://chakkradarisonline.wixsite.com/mysite" target = "_blank"><div class="niceimg"><img src = "Images\work-website-ss.PNG" style = "max-height: 300px; border-radius: 8px;">
-              <div class="overlay">
-                <div class="overlaytext">
-                  https://chakkradarisonline.wixsite.com/mysite
-                </div>
-              </div>
-              </div>
-              </a>
-                </br>
-                </br></td>
-              <td><a href = "https://anisubsud.wixsite.com/mysite" target = "_blank"><div class ="niceimg"><img src = "Images\work-website-ss(1).PNG" style = "max-height: 300px; border-radius: 8px;">
-                <div class="overlay">
-                  <div class="overlaytext">
-                    https://anisubsud.wixsite.com/mysite
-                  </div>
-                </div>
-                </div>
-              </a>
-            </center>
-          </tr>
-
-          <tr>
-            <center>
-              <td><a href = "https://kaashvi1303.wixsite.com/mysite" target = "_blank"><div class ="niceimg"><img src = "Images\work-website-ss(2).PNG" style = "max-height: 300px; width: 596px; border-radius: 8px;">
-                <div class="overlay">
-                  <div class="overlaytext">
-                    https://kaashvi1303.wixsite.com/mysite
-                  </div>
-                </div>
-                </div>
-              </a>
-                <br>
-                <br></td>
-              <td><a href="https://dyutimanshiv.wixsite.com/website-1" target="_blank"><img src="Images\work-website-ss(3).PNG" style="height: 290px; width: 596px; border-radius: 8px;"></a>
-                <br>
-                <br></td>
-            </center>
-          </tr>
-
-          <tr>
-          <center>
-======= -->
-            <style>
-                #websites img{
-                  width: 50% !important;
-                  height: auto !important;
-                }
-            </style>
-      <div id="websites" style="display: none;">
-        <h6>Below are a few of the websites that our students have created to spread awareness about campaigns and the cause:</h6>
-
-        <table class="websites">
-          <tr>
-            <center>
-              <td><div class="niceimg"><a href="https://chakkradarisonline.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss.PNG" style="max-height: 300px; border-radius: 8px;">  <div class="overlay">
-                  <div class="overlaytext">
-                    https://chakkradarisonline.wixsite.com/mysite
-                  </div>
-                </div>
-                </div></a>
-                </br>
-                </br></td>
-              <td><a href="https://anisubsud.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(1).PNG" style="max-height: 300px; border-radius: 8px;"></a>
-                <br>
-                <br></td>
-            </center>
-          </tr>
-
-          <tr>
-            <center>
-              <td><a href="https://kaashvi1303.wixsite.com/mysite" target="_blank"><img src="Images\work-website-ss(2).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
-                <br>
-                <br></td>
-              <td><a href="https://dyutimanshiv.wixsite.com/website-1" target="_blank"><img src="Images\work-website-ss(3).PNG" style="height: 290px; width: 596px; border-radius: 8px;"></a>
-                <br>
-                <br></td>
-            </center>
-          </tr>
-
-          <tr>
-          <center>
-            <td>
-              <a href="https://rishick36.wixsite.com/waterforall" target="_blank"><img src="Images\work-website-ss(4).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
-              <br>
-              <br></td>
-            <td>
-              <a href="https://shishirgullipalli.wixsite.com/waterconservation-1" target="_blank"><img src="Images\work-website-ss(5).PNG" style="max-height: 300px; width: 596px; border-radius: 8px;"></a>
-              <br>
-              <br></td>
-          </center>
-          </tr>
-        </table>
-
-
-      </div>
-
-
-    </div>
-  </div>
-  <br>
-  <br>
-
-
-  <br /><br />
 
   <div class="divider"></div>
 
@@ -330,20 +271,7 @@
     </div>
   </div>
 
-  <dic class="divider"></dic>
-
-  <div class="container" id="calculator">
-    <div class="row">
-      <div>
-        <h1>Water Consumption Calculator</h1>
-        <h5>To calculate your daily water usage Click on the button below!</h5>
-        <a class="nord-darkblue waves-effect waves-light btn-large modal-trigger" href="Water_Calc_v3.html">Calculator</a>
-      </div>
-    </div>
-  </div>
-
-
-
+  <div class="divider"></div>
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
