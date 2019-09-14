@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<title>Contributors</title>
+<link rel="shortcut icon" type="image/png" href="Images/Logo.png" />
+<script src="js/jquery.js" charset="utf-8"></script>
+<script src="js/script.js" charset="utf-8"></script>
+
+<head>
+  <style>
+    h1 {
+      background-color: #FDC02D;
+      color: #003255;
+      font-style: italic;
+    }
+    .invis-text {
+      color:rgba(0,0,0,0)
+    }
+  </style>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/nord-colours.css" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#work">Student Work</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <!-- <li><a href="blog.html">Blog</a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <style media="screen">
+
+  .niceimg{
+
+  }
+
+  .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+  }
+
+  .overlaytext {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .container:hover .overlay {
+    opacity: 1;
+  }
+
+  </style>
+
+</head>
+
+<body class="nord-lightgrey" style = "background-color: white;">
+  <style media="screen">
+    .pledge-container {
+      display: none
+    }
+  </style>
+
+
+
+  <div class="parallax-container" style="height: 600px;">
+    <div class="parallax"><img src="Images/bg.jpg" style="width: 50%; opacity: 100 !important"></div>
+    <div class="container" style="position: relative; top: 35vh; right: 15vh;">
+      <div class="row">
+        <div class="col s12">
+          <img width="100%" height="120%" src="Images/bg_text.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <style media="screen">
+      div.contribution-container {
+        display:flex;
+        height:auto;
+        max-height:200px;
+        padding:10px 50px;
+      }
+      div.contribution-container:nth-child(even){
+        flex-direction: row-reverse;
+      }
+      div.contribution-container img {
+        height:150px;
+        max-height:100%;
+        width:150px;
+        border-radius:30px;
+      }
+      div.contribution-container .contribution {
+        padding: 25px;
+      }
+      div.contribution-container .contribution .title {
+        font-weight: 425;
+        font-size:40px
+      }
+    </style>
+    <center>
+      <h1>Contributors</h1>
+    </center>
+    <div class="contribution-container" >
+      <img src="Images/actual/Muhsin.JPG" alt="">
+      <div class="contribution">
+        <div class="title">
+          Muhsin Mohamed
+        </div>
+        <div class="writeup">
+          Web developer.
+        </div>
+      </div>
+    </div>
+    <div class="contribution-container" >
+      <img src="Images/actual/Kabir.JPG" alt="">
+      <div class="contribution">
+        <div class="title">
+          Kabir De Sarkar
+        </div>
+        <div class="writeup">
+          Web developer.
+        </div>
+      </div>
+    </div>
+    <div class="contribution-container">
+      <img src="Images/actual/Chanakya.JPG" alt="">
+      <div class="contribution">
+        <div class="title">
+          Chanakya
+        </div>
+        <div class="writeup">
+          Web developer.
+        </div>
+      </div>
+    </div>
+    <div class="contribution-container">
+      <img src="Images/actual/Yugal.JPG" alt="">
+      <div class="contribution">
+        <div class="title">
+          Yugal
+        </div>
+        <div class="writeup">
+          Content
+        </div>
+      </div>
+    </div>
+    <div class="contribution-container">
+      <img src="Images/actual/Female blank.jpg" alt="">
+      <div class="contribution">
+        <div class="title">
+          Sashwath<span class="invis-text">You didn't send enrollment number</span>
+        </div>
+        <div class="writeup">
+          Content
+        </div>
+      </div>
+    </div>
+  </div>
+
+<body class="nord-lightgrey">
+  t
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+
+<footer class="page-footer black" style="margin-top:20px">
+  <div class="container">
+    <div class="row" style="margin-bottom: 0px;">
+      <div class="col s5 right">
+        Developed by <a href="https://github.com/muhsin7" target="_blank">Muhsin7</a>, <a href="https://github.com/Teminix" target="_blank">Teminix</a> and <a href="https://github.com/Chanmanstanflan" target="_blank">Chanmanstanflan</a>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script>
+  // INITIALIZING MATERIALIZE ELEMENTS
+
+  ////////////////////////////
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var elems = document.querySelectorAll('.modal');
+  //   var instances = M.Modal.init(elems, options);
+  // });
+
+  // Or with jQuery
+
+  $(document).ready(function() {
+    $('.modal').modal();
+  });
+  ////////////////////////////
+
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var elems = document.querySelectorAll('.sidenav');
+  //   var instances = M.Sidenav.init(elems, options);
+  // });
+
+  // Or with jQuery
+
+
+  // var instance = M.Tabs.init(el, options);
+
+  // Or with jQuery
+
+  $(document).ready(function() {
+    $('.tabs').tabs();
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function() {
+    $('.tabs').tabs();
+  });
+
+
+
+  $(document).ready(function() {
+    $('.parallax').parallax();
+  });
+
+
+  $(document).ready(function() {
+    $('.carousel').carousel();
+  });
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true,
+    dist: 0
+  });
+</script>
+
+</html>
