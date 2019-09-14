@@ -26,7 +26,11 @@
           </ul>
         </div>
       </nav>
-
+      <style media="screen">
+        input::placeholder {
+          color:#888888
+        }
+      </style>
       <script language="JavaScript">
 
       // CED subroutine for cleaning up JavaScript rounding errors
@@ -116,11 +120,11 @@
 
          if((form.DWAday.value-form.totalday.value)>0) {
 
-                    form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " gallons per capita LESS than the Desert Water Agency per capita water useage.");
+                    form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
 
                     }
                     else {
-      form.useage.value = ("Every year, your household uses " + (form.totalyear.value-form.DWAyear.value ) + " gallons per capita MORE than the Desert Water Agency per capita water useage.");
+      form.useage.value = ("Every year, your household uses " + (form.totalyear.value-form.DWAyear.value ) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
 
                     }
 
@@ -283,7 +287,7 @@
   <td colspan="2">
   Number Of People In Residence
   </td>
-  <td colspan="2"><input type="text" name="people" value="1" size="3" onFocus="clear_field(this)">
+  <td colspan="2"><input type="text" name="people" placeholder="Enter number of people" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr BGCOLOR="#B6D4D2">
@@ -300,7 +304,7 @@
   <td colspan="2">
   Daily Showers In The Residence
   </td>
-  <td colspan="2"><input type="text" name="showers" value="1" size="3" onFocus="clear_field(this)">
+  <td colspan="2"><input type="text" name="showers" placeholder="Enter number of daily showers" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -308,7 +312,7 @@
   Average Shower Time In Minutes
   </td>
   <td colspan="2">
-  <input type="text" name="showermin" value="6.3" size="3" onFocus="clear_field(this)">
+  <input type="text" name="showermin" placeholder="Shower time in minutes" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -316,7 +320,7 @@
   Shower Head Flow Rate (3.8 std. 1.6 res.)
   </td>
   <td colspan="2">
-  <input type="text" name="showerflow" size="3" value="3.8" onFocus="clear_field(this)">
+  <input type="text" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -324,7 +328,7 @@
   Total Weekly Baths In Residence
   </td>
   <td colspan="2">
-  <input type="text" name="baths" value="0" size="3" onFocus="clear_field(this)">
+  <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr BGCOLOR="#B6D4D2">
@@ -337,15 +341,15 @@
   Average Number Of Flushes Daily Per Person
   </td>
   <td colspan="2">
-  <input type="text" name="toiletflush" value="4" size="3" onFocus="clear_field(this)">
+  <input type="text" name="toiletflush" placeholder="Number of flushes" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
   <td colspan="2">
-  Gallons Per Flush (5 std. 1.6 res.)
+  Liters Per Flush (5 std. 1.6 res.)
   </td>
   <td colspan="2">
-  <input type="text" name="toiletflow" value="5" size="3" onFocus="clear_field(this)">
+  <input type="text" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr BGCOLOR="#B6D4D2">
@@ -358,7 +362,7 @@
   Average Number Of Times Each Person Uses Faucet Daily
   </td>
   <td colspan="2">
-  <input type="text" name="faucet" value="5" size="3" onFocus="clear_field(this)">
+  <input type="text" name="faucet" placeholder="Enter number of times used" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -366,7 +370,7 @@
   How Many Minutes Each Use
   </td>
   <td colspan="2">
-  <input type="text" name="faucetmin" value=".5" size="3" onFocus="clear_field(this)">
+  <input type="text" name="faucetmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr BGCOLOR="#B6D4D2">
@@ -379,7 +383,7 @@
   How Many Times Are Dishes Washed By Hand Daily
   </td>
   <td colspan="2">
-  <input type="text" name="dishhand" value="1" size="3" onFocus="clear_field(this)">
+  <input type="text" name="dishhand" placeholder="Enter times dish washer is used" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -387,7 +391,7 @@
   How Many Minutes Each Use
   </td>
   <td colspan="2">
-  <input type="text" name="dishmin" value="5" size="3" onFocus="clear_field(this)">
+  <input type="text" name="dishmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -395,15 +399,15 @@
   How Many Dishwasher Loads Each Week
   </td>
   <td colspan="2">
-  <input type="text" name="dishwasher" value="7" size="3" onFocus="clear_field(this)">
+  <input type="text" name="dishwasher" placeholder="Enter weekly loads" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
   <td colspan="2">
-  Gallons Per Dishwasher Load
+  Liters Per Dishwasher Load
   </td>
   <td colspan="2">
-  <input type="text" name="dishwasherflow" value="15" size="3" onFocus="clear_field(this)">
+  <input type="text" name="dishwasherflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr BGCOLOR="#B6D4D2">
@@ -415,15 +419,15 @@
   <td colspan="2">
   How Many Loads Of Laundry Each Week
   </td>
-  <td colspan="2"><input type="text" name="laundry" value="7" size="3" onFocus="clear_field(this)">
+  <td colspan="2"><input type="text" name="laundry" placeholder="Enter loads" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
   <td colspan="2">
-  How Many Gallons Each Load
+  How Many Liters Each Load
   </td>
   <td colspan="2">
-  <input type="text" name="laundryload" value="55"  size="3" onFocus="clear_field(this)">
+  <input type="text" name="laundryload" placeholder="Enter liters"  size="3" onFocus="clear_field(this)">
   </td>
   </tr>
 
@@ -436,7 +440,7 @@
   <td colspan="2">
   How Many Cars you have
   </td>
-  <td colspan="2"><input type="text" name="car" value="1" size="3" onFocus="clear_field(this)">
+  <td colspan="2"><input type="text" name="car" placeholder="Number of cars" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -444,7 +448,7 @@
   How Many buckets of water you use
   </td>
   <td colspan="2">
-  <input type="text" name="carload" value="2"  size="3" onFocus="clear_field(this)">
+  <input type="text" name="carload" placeholder="Number of buckets used"  size="3" onFocus="clear_field(this)">
   </td>
   </tr>
 
@@ -461,7 +465,7 @@
   How Many Times Is The Lawn Watered Each Week
   </td>
   <td colspan="2">
-  <input type="text" name="lawn" value="7" size="3" onFocus="clear_field(this)">
+  <input type="text" name="lawn" placeholder="Enter number of uses" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -469,7 +473,7 @@
   For How Many Minutes Each Time
   </td>
   <td colspan="2">
-  <input type="text" name="lawnmin" value="30" size="3" onFocus="clear_field(this)">
+  <input type="text" name="lawnmin" placeholder="Minutes of usage" size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -477,7 +481,7 @@
   How Many Minutes For Other Outdoor Use Each Week
   </td>
   <td colspan="2">
-  <input type="text" name="other" value="10" size="3" onFocus="clear_field(this)">
+  <input type="text" name="other" placeholder='Enter minutes' size="3" onFocus="clear_field(this)">
   </td>
   </tr>
   <tr>
@@ -573,18 +577,18 @@
   </tr>
 
   <tr>
-  <td colspan="2"><I>Interior</I> per capita gallons per day</td>
+  <td colspan="2"><I>Interior</I> per capita Liters per day</td>
   <td align="center"><input type="text" name="indoorday" value="" size="4" readonly></td>
   </tr>
   <tr>
-  <td colspan="2"><I>Exterior</I> per capita gallons per day</td>
+  <td colspan="2"><I>Exterior</I> per capita Liters per day</td>
   <td align="center"><input type="text" name="outdoorday" value="" size="4"></td>
   </tr>
 
   <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
   <td width="150">&nbsp;</td>
-  <td colspan="3" align="center"><font size="2">Total Per Capita Gallons Of Water Used</font></td>
+  <td colspan="3" align="center"><font size="2">Total Per Capita Liters Of Water Used</font></td>
   </tr>
   <tr>
   <td width="250">&nbsp;</td>
