@@ -42,7 +42,19 @@
   .niceimg{
 
   }
-
+  .download-container {
+    display:flex;
+    justify-content: flex-end;
+  }
+  .download-container a {
+    margin-left:20px;
+    border-radius:5px;
+    padding:10px;
+    cursor:pointer;
+  }
+  .hidden {
+    display:none !important;
+  }
   .overlay {
   position: absolute;
   top: 0;
@@ -148,10 +160,10 @@
         <h1>Student's Work</h1>
         <ul class="tabs tabs-transparent nord-darkblue">
           <li class="tab waves-effect waves-light" style="width:49%;">
-            <a href="#posters" id="posterstab" onclick="getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'">Posters</a>
+            <a href="#posters" id="posterstab" onclick="getElementById('posters').style.display = 'block'; getElementById('websites').style.display = 'none'; $('.download-container').removeClass('hidden')">Posters</a>
           </li>
           <li class="tab waves-effect waves-light" style="width:49%;">
-            <a href="#websites" id="websitestab" onclick="getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'">Web page</a>
+            <a href="#websites" id="websitestab" onclick="getElementById('posters').style.display = 'none'; getElementById('websites').style.display = 'block'; $('.download-container').addClass('hidden')">Web page</a>
           </li>
         </ul>
       </div>
@@ -167,7 +179,7 @@
       </style>
       <div class="row">
         <div id="posters">
-          <div class="carousel carousel-slider">
+          <div class="carousel carousel-slider" id="poster-carousel">
             <a class="carousel-item" href="#one!"><img src="Images\Posters\000.png"></a>
             <a class="carousel-item" href="#two!"><img src="Images\Posters\Screen Shot 2019-09-01 at 1.18.18 PM.png"></a>
             <a class="carousel-item" href="#three!"><img src="Images\Posters\Water Conservation.jpg"></a>
@@ -230,6 +242,15 @@
         </div>
 
 
+      </div>
+      <div class="download-container">
+        <!-- <a href="Images/Posters/000.png" download="download" id="download-anchor" >text</a> -->
+        <a class="tooltipped nord-yellow" data-tooltip="Download current poster" onclick="executeCarouselDownloadFunctionIfMuhsinSeesThisLongFunctionNameHi(this)">
+          <img src="Images/download icon.png" alt="" height="20px">
+        </a>
+        <a class="tooltipped nord-yellow" data-tooltip="Download all posters" href="Images/Posters/posters.zip" download>
+          <img src="Images/zip.png" alt="" height="20px">
+        </a>
       </div>
     </div>
     <br />
@@ -306,6 +327,10 @@
 
   $(document).ready(function() {
     $('.modal').modal();
+  });
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
   });
   ////////////////////////////
 
