@@ -1,105 +1,101 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Water Conservation</title>
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
-      <link rel = "stylesheet"
-         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel = "stylesheet"
-         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
 
-      <link rel="stylesheet" href="css/nord-colours.css">
-      <script type = "text/javascript"
-         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
-      </script>
+<head>
+  <title>Water Conservation</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
 
-      <TITLE>Water Consumption Calculator</TITLE>
+  <link rel="stylesheet" href="css/nord-colours.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+  </script>
+
+  <TITLE>Water Consumption Calculator</TITLE>
 
 
-      <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
-        <div class="nav-wrapper nord-darkblue">
-          <a href="index.html" class="brand-logo"><img src = "Images/Logo.png" style="width:10%; height:10%;"/></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.html">Home</a></li>
-            <!-- <li><a href="blog.html">Blog</a></li> -->
-          </ul>
-        </div>
-      </nav>
-      <style media="screen">
-        input::placeholder {
-          color:#888888
-        }
-      </style>
-      <script language="JavaScript">
+  <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
+    <div class="nav-wrapper nord-darkblue">
+      <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <!-- <li><a href="blog.html">Blog</a></li> -->
+      </ul>
+    </div>
+  </nav>
+  <style media="screen">
+    input::placeholder {
+      color: #888888
+    }
+  </style>
+  <script language="JavaScript">
+    // CED subroutine for cleaning up JavaScript rounding errors
+    // to any reasonable number of decimal places 5/5/1997 last mod 2/19/2004
+    // round for decimal of (value of precision) places, default is 3
+    // This routine can be used to pass a number and a number for precision
+    // or just a number only, that is to be rounded to a set number of decimal
+    // places. This routine supports leading and trailing zeros, leading and
+    // trailing spaces, and padding. To prevent errors, pass variables as a string.
 
-      // CED subroutine for cleaning up JavaScript rounding errors
-      // to any reasonable number of decimal places 5/5/1997 last mod 2/19/2004
-      // round for decimal of (value of precision) places, default is 3
-      // This routine can be used to pass a number and a number for precision
-      // or just a number only, that is to be rounded to a set number of decimal
-      // places. This routine supports leading and trailing zeros, leading and
-      // trailing spaces, and padding. To prevent errors, pass variables as a string.
-
-      function perRound(num, precision) {
+    function perRound(num, precision) {
       var precision = 3; //default value if not passed from caller, change if desired
       // remark if passed from caller
       precision = parseInt(precision); // make certain the decimal precision is an integer
-          var result1 = num * Math.pow(10, precision);
-          var result2 = Math.round(result1);
-          var result3 = result2 / Math.pow(10, precision);
-          return zerosPad(result3, precision);
+      var result1 = num * Math.pow(10, precision);
+      var result2 = Math.round(result1);
+      var result3 = result2 / Math.pow(10, precision);
+      return zerosPad(result3, precision);
+    }
+
+    function zerosPad(rndVal, decPlaces) {
+      var valStrg = rndVal.toString(); // Convert the number to a string
+      var decLoc = valStrg.indexOf("."); // Locate the decimal point
+      // check for a decimal
+      if (decLoc == -1) {
+        decPartLen = 0; // If no decimal, then all decimal places will be padded with 0s
+        // If decPlaces is greater than zero, add a decimal point
+        valStrg += decPlaces > 0 ? "." : "";
+      } else {
+        decPartLen = valStrg.length - decLoc - 1; // If there is a decimal already, only the needed decimal places will be padded with 0s
       }
-
-      function zerosPad(rndVal, decPlaces) {
-          var valStrg = rndVal.toString(); // Convert the number to a string
-          var decLoc = valStrg.indexOf("."); // Locate the decimal point
-          // check for a decimal
-          if (decLoc == -1) {
-              decPartLen = 0; // If no decimal, then all decimal places will be padded with 0s
-              // If decPlaces is greater than zero, add a decimal point
-              valStrg += decPlaces > 0 ? "." : "";
-          }
-          else {
-              decPartLen = valStrg.length - decLoc - 1; // If there is a decimal already, only the needed decimal places will be padded with 0s
-          }
-           var totalPad = decPlaces - decPartLen;    // Calculate the number of decimal places that need to be padded with 0s
-          if (totalPad > 0) {
-              // Pad the string with 0s
-              for (var cntrVal = 1; cntrVal <= totalPad; cntrVal++)
-                  valStrg += "0";
-              }
-          return valStrg;
+      var totalPad = decPlaces - decPartLen; // Calculate the number of decimal places that need to be padded with 0s
+      if (totalPad > 0) {
+        // Pad the string with 0s
+        for (var cntrVal = 1; cntrVal <= totalPad; cntrVal++)
+          valStrg += "0";
       }
-      // send the value in as "num" in a variable
+      return valStrg;
+    }
+    // send the value in as "num" in a variable
 
-      // clears field of default value
-      function clear_field(field) {
-      if (field.value==field.defaultValue) {
-      field.value=''
+    // clears field of default value
+    function clear_field(field) {
+      if (field.value == field.defaultValue) {
+        field.value = ''
       }
-      }
+    }
 
-      function compute(form)  {
-      var bathtotal = Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40))/form.people.value);
-      var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value)/form.people.value);
-      var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3)/form.people.value);
-      var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value)/7)/form.people.value);
-      var laundryday = Math.round(((form.laundry.value * form.laundryload.value)/7)/form.people.value);
-      var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3)/form.people.value);
+    function compute(form) {
+      var bathtotal = Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40)) / form.people.value);
+      var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value) / form.people.value);
+      var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3) / form.people.value);
+      var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value) / 7) / form.people.value);
+      var laundryday = Math.round(((form.laundry.value * form.laundryload.value) / 7) / form.people.value);
+      var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3) / form.people.value);
 
-      var carwashday = Math.round((form.car.value * form.carload.value)/form.people.value);
+      var carwashday = Math.round((form.car.value * form.carload.value) / form.people.value);
 
-      var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15)/7)/form.people.value);
-      var otherday = Math.round(((form.other.value * 10)/7)/form.people.value);
+      var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15) / 7) / form.people.value);
+      var otherday = Math.round(((form.other.value * 10) / 7) / form.people.value);
       var indoorday = Math.round(bathtotal + toiletday + faucetday + laundryday + dishwasherday + dishday);
       var outdoorday = Math.round(lawnday + otherday + carwashday);
       var totalday = Math.round(indoorday + outdoorday);
       var totalmonth = Math.round(totalday * 30.4);
       var totalyear = Math.round(totalday * 365);
       var DWAday = 207;
-      var DWAmonth = DWAday*30;
-      var DWAyear = DWAday*365;
+      var DWAmonth = DWAday * 30;
+      var DWAyear = DWAday * 365;
       form.bathtotal.value = bathtotal;
       form.toiletday.value = toiletday;
       form.faucetday.value = faucetday;
@@ -118,25 +114,25 @@
       form.DWAmonth.value = DWAmonth;
       form.DWAyear.value = DWAyear;
 
-         if((form.DWAday.value-form.totalday.value)>0) {
+      if ((form.DWAday.value - form.totalday.value) > 0) {
 
-                    form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
+        form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
 
-                    }
-                    else {
-      form.useage.value = ("Every year, your household uses " + (form.totalyear.value-form.DWAyear.value ) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
-
-                    }
+      } else {
+        form.useage.value = ("Every year, your household uses " + (form.totalyear.value - form.DWAyear.value) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
 
       }
-      function ClearForm(form)  {
+
+    }
+
+    function ClearForm(form) {
       form.bathtotal.value = "";
       form.toiletday.value = "";
       form.faucetday.value = "";
       form.laundryday.value = "";
       form.dishwasherday.value = "";
       form.dishday.value = "";
-      form.lawnday.value ="";
+      form.lawnday.value = "";
       form.otherday.value = "";
       form.indoorday.value = "";
       form.outdoorday.value = "";
@@ -147,466 +143,476 @@
       form.DWAmonth.value = "";
       form.DWAyear.value = "";
       form.useage.value = "";
-      form.showers.value="";
-      form.baths.value="";
-      form.people.value="";
-      form.toiletflush.value="";
-      form.faucet.value="";
-      form.faucetmin.value="";
-      form.dishwasher.value="";
-      form.laundry.value="";
-      form.dishhand.value="";
-      form.car.vlaue = "";
-      form.carload.vlaue = "";
+      form.showers.value = "";
+      form.baths.value = "";
+      form.people.value = "";
+      form.toiletflush.value = "";
+      form.faucet.value = "";
+      form.faucetmin.value = "";
+      form.dishwasher.value = "";
+      form.laundry.value = "";
+      form.dishhand.value = "";
+      form.car.value = "";
+      form.carload.value = "";
       form.carwashday.value = "";
-      form.dishmin.value="";
-      form.lawn.value="";
-      form.lawnmin.value="";
-      form.other.value="";
-      form.showermin.value="";
+      form.dishmin.value = "";
+      form.lawn.value = "";
+      form.lawnmin.value = "";
+      form.other.value = "";
+      form.showermin.value = "";
 
-      }
-      //  -->
-      </script>
-
-
+    }
+    //  -->
+  </script>
 
 
-   </head>
 
 
-   <body style="nord-lightgrey">
-      <nav>
+</head>
+
+
+<body style="nord-lightgrey">
+  <nav>
     <div class="nav-wrapper light-blue darken-4">
       <div class="nav-wrapper">
-      <a href="#" class="brand-logo"></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-
-
-
-      </ul>
+        <a href="#" class="brand-logo"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
       </div>
     </div>
   </nav>
-<div>
-<ul></ul>
-</div>
-<div id="calculator" class="col s12" style="text-align:right; width:90%; padding:0;"> </div>
+  <div>
+    <ul></ul>
+  </div>
+  <div id="calculator" class="col s12" style="text-align:right; width:90%; padding:0;"> </div>
 
-<div class="container">
+  <div class="container">
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <style TYPE="text/css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style TYPE="text/css">
+      /* body { font-family: Tahoma, Verdana; } */
+      input.btn {
+        color: black;
+        font: bold 75% 'tahoma', helvetica, sans-serif;
+        background-color: #ffd148;
+        border: 2px solid;
+        border-color: #c7c5c8;
+      }
 
-  /* body { font-family: Tahoma, Verdana; } */
-  input.btn {
-    color:black;
-    font: bold 75% 'tahoma',helvetica,sans-serif;
-    background-color:#ffd148;
-    border: 2px solid;
-    border-color: #c7c5c8;
-   }
+      input.btn2 {
+        color: black;
+        font: bold 95% 'tahoma', helvetica, sans-serif;
+        background-color: #ffd148;
+        border: 2px solid;
+        border-color: #c7c5c8;
 
-   input.btn2 {
-    color:black;
-    font: bold 95% 'tahoma',helvetica,sans-serif;
-    background-color:#ffd148;
-    border: 2px solid;
-    border-color: #c7c5c8;
+      }
+    </style>
+    <meta name="viewport" content="width=958, initial-scale=1">
+    <div align="center">
+      <table width="949" border="0" cellpadding="0" bgcolor="#899194" cellspacing="0">
 
-  }
+        <div>
 
-  </style>
-  <meta name="viewport" content="width=958, initial-scale=1">
-  <div align="center"><table width="949" border="0" cellpadding="0" bgcolor="#899194" cellspacing="0">
-
-    <div>
-
+        </div>
+        </form>
     </div>
-  </form>
+
+    <div align="center" style="float:right; margin-right:40px;"><span style="decoration:none; color:white; font-weight:bold; font-size:smaller;">
+
+        <a href="#" onClick="history.go(-1)" style="decoration:none; color:white;"><b>Back</b></a> </span></div>
+    </td>
+    </tr>
+    </table>
   </div>
 
-  <div align="center" style="float:right; margin-right:40px;"><span style="decoration:none; color:white; font-weight:bold; font-size:smaller;">
+  <tr>
+    <td colspan="3"><br />
+      <div align="center">
 
-  <a href="#" onClick="history.go(-1)" style="decoration:none; color:white;"><b>Back</b></a> </span></div>
-  </td></tr>
-  </table></div>
+        <!-- Everyday Top Link Unit -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:15px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3941508269"></ins>
 
-  <tr><td colspan="3"><br />
-  <div align="center">
-
-  <!-- Everyday Top Link Unit -->
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:728px;height:15px"
-       data-ad-client="ca-pub-8018289210612122"
-       data-ad-slot="3941508269"></ins>
-
+      </div>
+    </td>
+  </tr>
+  </table>
   </div>
-  </td></tr>
-  </table></div>
 
 
 
   <FORM name="water">
 
-  <table align="center" width="950" BORDER=0 CELLPADDING=5>
-  <tr bgcolor=#FFFFFF>
-  <!--ROW 1-->
-  <td width="80%">
-  <h1>Water Consumption Calculator</h1>
+    <table align="center" width="950" BORDER=0 CELLPADDING=5>
+      <tr bgcolor=#FFFFFF>
+        <!--ROW 1-->
+        <td width="80%">
+          <h1>Water Consumption Calculator</h1>
 
-  <table align="center" BORDER=5 CELLPADDING=5>
-  <tr bgcolor=#FFFFFF>
-  <!--ROW 1-->
-  <td width="80%" BGCOLOR="#B6D4D2">
+          <table align="center" BORDER=5 CELLPADDING=5>
+            <tr bgcolor=#FFFFFF>
+              <!--ROW 1-->
+              <td width="80%" BGCOLOR="#B6D4D2">
 
-  <br>
+                <br>
 
-  <br>
-  <center>
-  <table align="middle" BORDER=5 CELLPADDING=5>
-  <tr bgcolor=#FFFFFF>
-  <!--ROW 1-->
- <td width="80%">
-  <center>
-  <table align="middle" BORDER=5 CELLPADDING=5>
-
-
-<tr bgcolor= yellow>
-  <td align="center" colspan="4">
-  <b>Water Calculator</b>
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-  <b>Required Data Entry
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Number Of People In Residence
-  </td>
-  <td colspan="2"><input type="text" name="people" placeholder="Enter number of people" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-  <b>Indoor Water Use </b>
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Bathroom Water Use </b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Daily Showers In The Residence
-  </td>
-  <td colspan="2"><input type="text" name="showers" placeholder="Enter number of daily showers" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Average Shower Time In Minutes
-  </td>
-  <td colspan="2">
-  <input type="text" name="showermin" placeholder="Shower time in minutes" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Shower Head Flow Rate (3.8 std. 1.6 res.)
-  </td>
-  <td colspan="2">
-  <input type="text" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Total Weekly Baths In Residence
-  </td>
-  <td colspan="2">
-  <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Toilet Water Use </b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Average Number Of Flushes Daily Per Person
-  </td>
-  <td colspan="2">
-  <input type="text" name="toiletflush" placeholder="Number of flushes" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Liters Per Flush (5 std. 1.6 res.)
-  </td>
-  <td colspan="2">
-  <input type="text" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Faucet Water Use </b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Average Number Of Times Each Person Uses Faucet Daily
-  </td>
-  <td colspan="2">
-  <input type="text" name="faucet" placeholder="Enter number of times used" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Minutes Each Use
-  </td>
-  <td colspan="2">
-  <input type="text" name="faucetmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Dishwashing Water Use</b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Times Are Dishes Washed By Hand Daily
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishhand" placeholder="Enter times dish washer is used" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Minutes Each Use
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Dishwasher Loads Each Week
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishwasher" placeholder="Enter weekly loads" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Liters Per Dishwasher Load
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishwasherflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Laundry Water Use</b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Loads Of Laundry Each Week
-  </td>
-  <td colspan="2"><input type="text" name="laundry" placeholder="Enter loads" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Liters Each Load
-  </td>
-  <td colspan="2">
-  <input type="text" name="laundryload" placeholder="Enter liters"  size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-
- <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Car Wash</b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Cars you have
-  </td>
-  <td colspan="2"><input type="text" name="car" placeholder="Number of cars" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many buckets of water you use
-  </td>
-  <td colspan="2">
-  <input type="text" name="carload" placeholder="Number of buckets used"  size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-
-  <tr BGCOLOR="#B6D4D2">
-
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Lawn Water Use</b>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Times Is The Lawn Watered Each Week
-  </td>
-  <td colspan="2">
-  <input type="text" name="lawn" placeholder="Enter number of uses" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  For How Many Minutes Each Time
-  </td>
-  <td colspan="2">
-  <input type="text" name="lawnmin" placeholder="Minutes of usage" size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  How Many Minutes For Other Outdoor Use Each Week
-  </td>
-  <td colspan="2">
-  <input type="text" name="other" placeholder='Enter minutes' size="3" onFocus="clear_field(this)">
-  </td>
-  </tr>
-  <tr>
-  <td align="center" colspan="4" BGCOLOR="#B6D4D2">
-  <center>
-    <input type="button" value="Calculate" Onclick="compute(this.form)" class="nord-darkblue waves-effect waves-light btn-large">&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Values" onClick="ClearForm(this.form)" class="nord-darkblue waves-effect waves-light btn-large">
-    </center><br />
-  <hr style="background:#ffd148; border:0; height:5px" />
-  <!-- Everyday Mid 300 -->
-
-  </td>
-  </tr>
-  <tr BGCOLOR="#B6D4D2">
-  <td align="center" colspan="4">
-<b>  Calculated Results </b>
-  </td>
-  </tr>
-  <td colspan="2">
-  Bathroom
-  </td>
-  <td colspan="2">
-  <input type="text" name="bathtotal" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Lawn Watering
-  </td>
-  <td colspan="2">
-  <input type="text" name="lawnday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Toilets
-  </td>
-  <td colspan="2">
-  <input type="text" name="toiletday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Other Outdoor Uses
-  </td>
-  <td colspan="2">
-  <input type="text" name="otherday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Faucets
-  </td>
-  <td colspan="2">
-  <input type="text" name="faucetday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Laundry
-  </td>
-  <td colspan="2">
-  <input type="text" name="laundryday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Dishwasher
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishwasherday" value="" size="4" readonly>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Hand Washing Dishes
-  </td>
-  <td colspan="2">
-  <input type="text" name="dishday" value="" size="4" readonly></td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  Car Washing
-  </td>
-  <td colspan="2">
-  <input type="text" name="carwashday" value="" size="4" readonly></td>
-  </tr>
-  <tr>
-  <td colspan="4" align="center"><B>TOTAL CONSUMPTION</b></td>
-  </tr>
-  <tr>
-  <td colspan="2">&nbsp;</td>
-  <td align="center">Your House</td>
-  </tr>
-
-  <tr>
-  <td colspan="2"><I>Interior</I> per capita Liters per day</td>
-  <td align="center"><input type="text" name="indoorday" value="" size="4" readonly></td>
-  </tr>
-  <tr>
-  <td colspan="2"><I>Exterior</I> per capita Liters per day</td>
-  <td align="center"><input type="text" name="outdoorday" value="" size="4"></td>
-  </tr>
-
-  <tr><td colspan="4">&nbsp;</td></tr>
-  <tr>
-  <td width="150">&nbsp;</td>
-  <td colspan="3" align="center"><font size="2">Total Per Capita Liters Of Water Used</font></td>
-  </tr>
-  <tr>
-  <td width="250">&nbsp;</td>
-  <td width="100" align="center"><font size="2"> Per Day</font></td><td width="100" align="center"><font size="2"> Per Month</font></td><td width="100" align="center"><font size="2"> Per Year</font></td>
-  </tr>
-  <tr>
-  <td>Your Household</td>
-  <td colspan="1" align="right"><input type="text" name="totalday" value="" size="6" readonly></td>
-  <td colspan="1" align="right"><input type="text" name="totalmonth" value="" size="8" readonly></td>
-  <td colspan="1" align="right"><input type="text" name="totalyear" value="" size="11" readonly></td>
-  </tr>
+                <br>
+                <center>
+                  <table align="middle" BORDER=5 CELLPADDING=5>
+                    <tr bgcolor=#FFFFFF>
+                      <!--ROW 1-->
+                      <td width="80%">
+                        <center>
+                          <table align="middle" BORDER=5 CELLPADDING=5>
 
 
-  <tr align="center">
+                            <tr bgcolor=yellow>
+                              <td align="center" colspan="4">
+                                <b>Water Calculator</b>
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b>Required Data Entry
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Number Of People In Residence
+                              </td>
+                              <td colspan="2"><input type="text" name="people" placeholder="Enter number of people" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b>Indoor Water Use </b>
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Bathroom Water Use </b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Daily Showers In The Residence
+                              </td>
+                              <td colspan="2"><input type="text" name="showers" placeholder="Enter number of daily showers" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Average Shower Time In Minutes
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="showermin" placeholder="Shower time in minutes" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Shower Head Flow Rate (3.8 std. 1.6 res.)
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Total Weekly Baths In Residence
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Toilet Water Use </b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Average Number Of Flushes Daily Per Person
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="toiletflush" placeholder="Number of flushes" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Liters Per Flush (5 std. 1.6 res.)
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Faucet Water Use </b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Average Number Of Times Each Person Uses Faucet Daily
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="faucet" placeholder="Enter number of times used" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Minutes Each Use
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="faucetmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Dishwashing Water Use</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Times Are Dishes Washed By Hand Daily
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="dishhand" placeholder="Enter times dish washer is used" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Minutes Each Use
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="dishmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Dishwasher Loads Each Week
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="dishwasher" placeholder="Enter weekly loads" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                Liters Per Dishwasher Load
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="dishwasherflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Laundry Water Use</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Loads Of Laundry Each Week
+                              </td>
+                              <td colspan="2"><input type="text" name="laundry" placeholder="Enter loads" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Liters Each Load
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="laundryload" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
 
-  </tr>
-  </tr>
-  </table>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Car Wash</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Cars you have
+                              </td>
+                              <td colspan="2"><input type="text" name="car" placeholder="Number of cars" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many buckets of water you use
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="carload" placeholder="Number of buckets used" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+
+                            <tr BGCOLOR="#B6D4D2">
+
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Lawn Water Use</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Times Is The Lawn Watered Each Week
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="lawn" placeholder="Enter number of uses" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                For How Many Minutes Each Time
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="lawnmin" placeholder="Minutes of usage" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                How Many Minutes For Other Outdoor Use Each Week
+                              </td>
+                              <td colspan="2">
+                                <input type="text" name="other" placeholder='Enter minutes' size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="center" colspan="4" BGCOLOR="#B6D4D2">
+                                <center>
+                                  <input type="button" value="Calculate" Onclick="compute(this.form)" class="nord-darkblue waves-effect waves-light btn-large">&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Values" onClick="ClearForm(this.form)"
+                                    class="nord-darkblue waves-effect waves-light btn-large">
+                                </center><br />
+                                <hr style="background:#ffd148; border:0; height:5px" />
+                                <!-- Everyday Mid 300 -->
+
+                              </td>
+                            </tr>
+                            <tr BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4">
+                                <b> Calculated Results </b>
+                              </td>
+                            </tr>
+                            <td colspan="2">
+                              Bathroom
+                            </td>
+                            <td colspan="2">
+                              <input type="text" name="bathtotal" value="" size="4" readonly>
+                            </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Lawn Watering
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="lawnday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Toilets
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="toiletday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Other Outdoor Uses
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="otherday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Faucets
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="faucetday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Laundry
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="laundryday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Dishwasher
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="dishwasherday" value="" size="4" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Hand Washing Dishes
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="dishday" value="" size="4" readonly></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        Car Washing
+                      </td>
+                      <td colspan="2">
+                        <input type="text" name="carwashday" value="" size="4" readonly></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" align="center"><B>TOTAL CONSUMPTION</b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">&nbsp;</td>
+                      <td align="center">Your House</td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2"><I>Interior</I> per capita Liters per day</td>
+                      <td align="center"><input type="text" name="indoorday" value="" size="4" readonly></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><I>Exterior</I> per capita Liters per day</td>
+                      <td align="center"><input type="text" name="outdoorday" value="" size="4"></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="4">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="150">&nbsp;</td>
+                      <td colspan="3" align="center">
+                        <font size="2">Total Per Capita Liters Of Water Used</font>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="250">&nbsp;</td>
+                      <td width="100" align="center">
+                        <font size="2"> Per Day</font>
+                      </td>
+                      <td width="100" align="center">
+                        <font size="2"> Per Month</font>
+                      </td>
+                      <td width="100" align="center">
+                        <font size="2"> Per Year</font>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Your Household</td>
+                      <td colspan="1" align="right"><input type="text" name="totalday" value="" size="6" readonly></td>
+                      <td colspan="1" align="right"><input type="text" name="totalmonth" value="" size="8" readonly></td>
+                      <td colspan="1" align="right"><input type="text" name="totalyear" value="" size="11" readonly></td>
+                    </tr>
+
+
+                    <tr align="center">
+
+                    </tr>
+            </tr>
+          </table>
   </form>
 
 
@@ -620,43 +626,51 @@
 
 
   <div align="center">
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- All pages Large Rectangle -->
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:336px;height:280px"
-       data-ad-client="ca-pub-8018289210612122"
-       data-ad-slot="3358458988"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  </td>
-  </td></tr></table>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- All pages Large Rectangle -->
+    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3358458988"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </td>
+    </td>
+    </tr>
+    </table>
 
-   </SCRIPT>
+    </SCRIPT>
 
-  </td></tr></table>
+    </td>
+    </tr>
+    </table>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-586965-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-586965-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
 
-  </script>
-  </td>
-  </tr>
-  </table>
-  </td>
-  </tr>
-  </table>
-
-</div>
-
+  </div>
 
 
 
-   </body>
+
+</body>
+
 </html>
