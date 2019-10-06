@@ -318,7 +318,7 @@
                                 </select>
                               </td>
                               <td colspan="2">
-                                <input type="text" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
+                                <input type="number" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
                               </td>
                             </tr>
                             <tr>
@@ -656,6 +656,34 @@
     <script>
       $(() => {
         $('select').formSelect();
+        $.fn.toArray = function(){
+          return Array.from(this)
+        }
+        $.fn.jQArray = function(){
+          return this.toArray().map(e=>$(e))
+        }
+        $('select').each(function(e,k){
+          k = $(k);
+          let input = k.parents("tr").eq(0).find("input:not(.select-dropdown)")
+          // console.log(input)
+          k.on('change',(e) => {
+            if(!isNaN(k.val())){
+              input.val(k.val())
+            }
+          })
+          input.on("input",(e) => {
+            // console.log(input.val())
+            let value = input.val();
+            let optionMap = k.children('option').jQArray().map(e=>e.val()).filter(e=>e!="").filter(e=>!isNaN(e));
+            if(optionMap.indexOf(value) != -1){
+              k.val(value);
+              k.formSelect()
+            } else {
+              k.val("other")
+              k.formSelect()
+            }
+          })
+        })
       })
     </script>
     </td>
@@ -668,17 +696,16 @@
   </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, options);
-  });
+  // document.addEventListener('DOMContentLoaded', function() {
+  // var elems = document.querySelectorAll('.sidenav');
+  // var instances = M.Sidenav.init(elems, options);
+  // });
 
   // Or with jQuery
 
   $(document).ready(function(){
   $('.sidenav').sidenav();
   });
-  console.log("lul")
 </script>
 
 
