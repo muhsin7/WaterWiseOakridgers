@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head style="background-color: #E3E1DC !important;">
   <title>Water Conservation</title>
   <meta name="viewport" content="width = device-width, initial-scale = 1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/nord-colours.css">
   <!-- Compiled and minified Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified Materiali JavaScript -->
+  <!-- Compiled and minified Materiali JavaScript -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </script>
@@ -32,11 +32,11 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="contributors.html">Contributors</a></li>
   </ul>
-  <style media="screen">
+  <!-- <style media="screen">
     input::placeholder {
       color: #888888
     }
-  </style>
+  </style> -->
   <script language="JavaScript">
     // CED subroutine for cleaning up JavaScript rounding errors
     // to any reasonable number of decimal places 5/5/1997 last mod 2/19/2004
@@ -172,10 +172,6 @@
     }
     //  -->
   </script>
-
-
-
-
 </head>
 
 
@@ -188,7 +184,7 @@
     <style TYPE="text/css">
       /* body { font-family: Tahoma, Verdana; } */
       input.btn {
-        color: black;
+        /* color: black; */
         font: bold 75% 'tahoma', helvetica, sans-serif;
         background-color: #ffd148;
         border: 2px solid;
@@ -196,80 +192,91 @@
       }
 
       input.btn2 {
-        color: black;
+        /* color: black; */
         font: bold 95% 'tahoma', helvetica, sans-serif;
         background-color: #ffd148;
         border: 2px solid;
         border-color: #c7c5c8;
+      }
 
+      tr{
+        background-color: #E3E1DC !important;
+      }
+
+      body{
+          background-color: #E3E1DC !important;
       }
     </style>
     <meta name="viewport" content="width=958, initial-scale=1">
     <div align="center">
-      <table width="949" border="0" cellpadding="0" bgcolor="#899194" cellspacing="0">
+      <table width="949" bgcolor="#899194" cellspacing="0">
 
         <div>
 
         </div>
-        </form>
     </div>
 
     <div align="center" style="float:right; margin-right:40px;"><span style="decoration:none; color:white; font-weight:bold; font-size:smaller;">
 
-        <a href="#" onClick="history.go(-1)" style="decoration:none; color:white;"><b>Back</b></a> </span></div>
-    </td>
+        <!-- <a href="#" onClick="history.go(-1)" style="decoration:none; color:white;"><b>Back</b></a> </span></div> -->
+        </td>
+        </tr>
+        </table>
+    </div>
+
+    <tr>
+      <td colspan="3"><br />
+        <div align="center">
+
+          <!-- Everyday Top Link Unit -->
+          <ins class="adsbygoogle" style="display:inline-block;width:728px;height:15px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3941508269"></ins>
+
+        </div>
+      </td>
     </tr>
     </table>
   </div>
 
-  <tr>
-    <td colspan="3"><br />
-      <div align="center">
+  <style>
+    .nord-darkblue {
+      color: #fff !important !important;
+    }
 
-        <!-- Everyday Top Link Unit -->
-        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:15px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3941508269"></ins>
-
-      </div>
-    </td>
-  </tr>
-  </table>
-  </div>
+    form{
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+  </style>
 
 
+  <FORM name="water" style="">
 
-  <FORM name="water">
-
-    <table align="center" width="950" BORDER=0 CELLPADDING=5>
+    <table align="center" width="950" BORDER="0">
       <tr bgcolor=#FFFFFF>
         <!--ROW 1-->
         <td width="80%">
           <h1>Water Consumption Calculator</h1>
 
-          <table align="center" BORDER=5 CELLPADDING=5>
+          <table align="center" BORDER=0>
             <tr bgcolor=#FFFFFF>
               <!--ROW 1-->
-              <td width="80%" BGCOLOR="#B6D4D2">
+              <td width="80%" class="nord-red" style="padding-left: 20px; padding-right: 20px;">
 
                 <br>
 
                 <br>
                 <center>
-                  <table align="middle" BORDER=5 CELLPADDING=5>
+                  <table align="middle">
                     <tr bgcolor=#FFFFFF>
                       <!--ROW 1-->
-                      <td width="80%">
+                      <td width="80%" class="nord-red">
                         <center>
-                          <table align="middle" BORDER=5 CELLPADDING=5>
-
-
-                            <tr bgcolor=yellow>
-                              <td align="center" colspan="4">
-                                <b>Water Calculator</b>
-                              </td>
-                            </tr>
-                            <tr BGCOLOR="#B6D4D2">
-                              <td align="center" colspan="4">
-                                <b>Required Data Entry
+                          <table align="middle">
+                            <tr class="nord-yellow" style="background-color: #FDC02D !important;">
+                              <td colspan="4" align="center">
+                                <center>
+                                  <h6><b>Required Data Entry</b></h6>
+                                </center>
                               </td>
                             </tr>
                             <tr>
@@ -279,12 +286,14 @@
                               <td colspan="2"><input type="text" name="people" placeholder="Enter number of people" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
-                              <td align="center" colspan="4">
-                                <b>Indoor Water Use </b>
+                            <tr class="nord-yellow" style="background-color: #FDC02D !important;">
+                              <td colspan="4" align="center">
+                                <center>
+                                  <h6><b>Indoor Water Usage</b></h6>
+                                </center>
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Bathroom Water Use </b>
                               </td>
@@ -329,7 +338,7 @@
                                 <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Toilet Water Use </b>
                               </td>
@@ -350,7 +359,7 @@
                                 <input type="text" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Faucet Water Use </b>
                               </td>
@@ -371,7 +380,7 @@
                                 <input type="text" name="faucetmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Dishwashing Water Use</b>
                               </td>
@@ -408,7 +417,7 @@
                                 <input type="text" name="dishwasherflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Laundry Water Use</b>
                               </td>
@@ -428,8 +437,14 @@
                                 <input type="text" name="laundryload" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-yellow" style="background-color: #FDC02D !important;">
+                              <td colspan="4" align="center">
+                                <center>
+                                  <h6><b>Outdoor Water Usage</b></h6>
+                                </center>
+                              </td>
+                            </tr>
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Car Wash</b>
                               </td>
@@ -450,10 +465,10 @@
                               </td>
                             </tr>
 
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
 
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
+                            <tr class="nord-lightblue">
                               <td align="center" colspan="4">
                                 <b> Lawn Water Use</b>
                               </td>
@@ -483,24 +498,23 @@
                               </td>
                             </tr>
                             <tr>
-                              <td align="center" colspan="4" BGCOLOR="#B6D4D2">
+                              <td align="center" colspan="4" class="nord-red">
                                 <center>
-                                  <style>
-                                    .nord-darkblue{
-                                      color: #fff; !important
-                                    }
-                                  </style>
-                                  <input type="button" value="Calculate" Onclick="compute(this.form)" class="nord-darkblue waves-effect waves-light btn-large">&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Values" onClick="ClearForm(this.form)"
-                                    class="nord-darkblue waves-effect waves-light btn-large">
-                                </center><br />
-                                <hr style="background:#ffd148; border:0; height:5px" />
+                                  <!-- <input type="button" value="Text" onclick="function(this.form)" class="btn-large nord-darkblue waves-light"/> -->
+                                  <input type="button" value="Calculate" Onclick="compute(this.form)" class="nord-darkblue waves-light btn-large nord-red-text">
+                                  &nbsp;&nbsp;&nbsp;
+                                  <input type="button" value="Clear Values" onClick="ClearForm(this.form)" class="nord-darkblue waves-light btn-large nord-red-text">
+                                </center>
+                                <!-- <hr style="background:#ffd148; border:0; height:5px" /> -->
                                 <!-- Everyday Mid 300 -->
 
                               </td>
                             </tr>
-                            <tr BGCOLOR="#B6D4D2">
-                              <td align="center" colspan="4">
-                                <b> Calculated Results </b>
+                            <tr class="nord-yellow" style="background-color: #FDC02D !important;">
+                              <td colspan="4" align="center">
+                                <center>
+                                  <h6><b>Calculated results</b></h6>
+                                </center>
                               </td>
                             </tr>
                             <td colspan="2">
@@ -572,34 +586,40 @@
                       <td colspan="2">
                         <input type="text" name="carwashday" value="" size="4" readonly></td>
                     </tr>
-                    <tr>
-                      <td colspan="4" align="center"><B>TOTAL CONSUMPTION</b></td>
+                    <tr class="nord-yellow" style="background-color: #FDC02D !important;">
+                      <td colspan="4" align="center">
+                        <center>
+                          <h6><b><i>TOTAL CONSUMPTION</i></b></h6>
+                        </center>
+                      </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td colspan="2">&nbsp;</td>
                       <td align="center">Your House</td>
-                    </tr>
+                    </tr> -->
 
                     <tr>
                       <td colspan="2"><I>Interior</I> per capita Liters per day</td>
-                      <td align="center"><input type="text" name="indoorday" value="" size="4" readonly></td>
+                      <td align="center" colspan="2"><input type="text" name="indoorday" value="" size="4" readonly></td>
                     </tr>
                     <tr>
                       <td colspan="2"><I>Exterior</I> per capita Liters per day</td>
-                      <td align="center"><input type="text" name="outdoorday" value="" size="4"></td>
+                      <td align="center" colspan="2"><input type="text" name="outdoorday" value="" size="4"></td>
                     </tr>
+                    <tr>
+                      <!-- <td width="150">&nbsp;</td> -->
+                      <tr class="nord-yellow">
+                        <td colspan="4" align="center">
+                          <center>
+                          <b><i>Total Per Capita Liters Used</i></b>
+                          </center>
+                        </td>
+                      </tr>
+                    </tr>
+                    <tr style="font-weight: bold;">
+                      <td width="250">
 
-                    <tr>
-                      <td colspan="4">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td width="150">&nbsp;</td>
-                      <td colspan="3" align="center">
-                        <font size="2">Total Per Capita Liters Of Water Used</font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="250">&nbsp;</td>
+                      </td>&nbsp;</td></width="250"&nbsp;</td>
                       <td width="100" align="center">
                         <font size="2"> Per Day</font>
                       </td>
@@ -631,82 +651,68 @@
   </tr>
   </table>
 
-  <br>
-  <br>
-
-
-  <div align="center">
+  <!-- <div align="center">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- All pages Large Rectangle -->
     <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3358458988"></ins>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    </td>
-    </td>
-    </tr>
-    </table>
-
-    </SCRIPT>
-
-    </td>
-    </tr>
-    </table>
-
-    <script>
-      $(() => {
-        $('select').formSelect();
-        $.fn.toArray = function(){
-          return Array.from(this)
-        }
-        $.fn.jQArray = function(){
-          return this.toArray().map(e=>$(e))
-        }
-        $('select').each(function(e,k){
-          k = $(k);
-          let input = k.parents("tr").eq(0).find("input:not(.select-dropdown)")
-          // console.log(input)
-          k.on('change',(e) => {
-            if(!isNaN(k.val())){
-              input.val(k.val())
-            }
-          })
-          input.on("input",(e) => {
-            // console.log(input.val())
-            let value = input.val();
-            let optionMap = k.children('option').jQArray().map(e=>e.val()).filter(e=>e!="").filter(e=>!isNaN(e));
-            if(optionMap.indexOf(value) != -1){
-              k.val(value);
-              k.formSelect()
-            } else {
-              k.val("other")
-              k.formSelect()
-            }
-          })
-        })
-      })
-    </script>
-    </td>
-    </tr>
-    </table>
-    </td>
-    </tr>
-    </table>
-
+    </script> -->
   </div>
 
-<script>
-  // document.addEventListener('DOMContentLoaded', function() {
-  // var elems = document.querySelectorAll('.sidenav');
-  // var instances = M.Sidenav.init(elems, options);
-  // });
+    </td>
+    </td>
+    </table>
 
-  // Or with jQuery
+    </table>
 
-  $(document).ready(function(){
-  $('.sidenav').sidenav();
-  });
-</script>
+
+
+
+  <script>
+    $(() => {
+      $('select').formSelect();
+      $.fn.toArray = function() {
+        return Array.from(this)
+      }
+      $.fn.jQArray = function() {
+        return this.toArray().map(e => $(e))
+      }
+      $('select').each(function(e, k) {
+        k = $(k);
+        let input = k.parents("tr").eq(0).find("input:not(.select-dropdown)")
+        // console.log(input)
+        k.on('change', (e) => {
+          if (!isNaN(k.val())) {
+            input.val(k.val())
+          }
+        })
+        input.on("input", (e) => {
+          // console.log(input.val())
+          let value = input.val();
+          let optionMap = k.children('option').jQArray().map(e => e.val()).filter(e => e != "").filter(e => !isNaN(e));
+          if (optionMap.indexOf(value) != -1) {
+            k.val(value);
+            k.formSelect()
+          } else {
+            k.val("other")
+            k.formSelect()
+          }
+        })
+      })
+    })
+  </script>
+  <script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    // var elems = document.querySelectorAll('.sidenav');
+    // var instances = M.Sidenav.init(elems, options);
+    // });
+
+    // Or with jQuery
+
+    $(document).ready(function() {
+      $('.sidenav').sidenav();
+    });
+  </script>
 
 
 </body>
