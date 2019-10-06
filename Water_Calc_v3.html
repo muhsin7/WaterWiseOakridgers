@@ -18,14 +18,20 @@
 
 
   <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
-    <div class="nav-wrapper nord-darkblue">
+    <div class="nav-wrapper">
       <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
-        <!-- <li><a href="blog.html">Blog</a></li> -->
+        <li><a href="contributors.html">Contributors</a></li>
       </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contributors.html">Contributors</a></li>
+  </ul>
   <style media="screen">
     input::placeholder {
       color: #888888
@@ -174,19 +180,7 @@
 
 
 <body style="nord-lightgrey">
-  <nav>
-    <div class="nav-wrapper light-blue darken-4">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo"></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div>
-    <ul></ul>
-  </div>
-  <div id="calculator" class="col s12" style="text-align:right; width:90%; padding:0;"> </div>
+  <div id="calculator" class="col s8" style="text-align:right; width:90%; padding:0;"> </div>
 
   <div class="container">
 
@@ -491,6 +485,11 @@
                             <tr>
                               <td align="center" colspan="4" BGCOLOR="#B6D4D2">
                                 <center>
+                                  <style>
+                                    .nord-darkblue{
+                                      color: #fff; !important
+                                    }
+                                  </style>
                                   <input type="button" value="Calculate" Onclick="compute(this.form)" class="nord-darkblue waves-effect waves-light btn-large">&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Values" onClick="ClearForm(this.form)"
                                     class="nord-darkblue waves-effect waves-light btn-large">
                                 </center><br />
@@ -668,7 +667,18 @@
 
   </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, options);
+  });
 
+  // Or with jQuery
+
+  $(document).ready(function(){
+  $('.sidenav').sidenav();
+  });
+</script>
 
 
 </body>
