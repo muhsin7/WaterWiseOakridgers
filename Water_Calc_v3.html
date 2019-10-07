@@ -315,14 +315,14 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Shower Head Flow Rate (3.8 std. 1.6 res.)
+                                Shower Head Flow Rate (Assume moderate flow rate(not too high/too low))
                               </td>
                               <td colspan="1">
                                 <select>
                                   <option value selected disabled>Choose</option>
-                                  <option value="4.1">Small(4.1 liters/min)</option>
-                                  <option value="6.9">Medium(4.1 liters/min)</option>
-                                  <option value="9.5">Large(9.5 liters/min)</option>
+                                  <option value="7.5">Small(7.5 liters/min)</option>
+                                  <option value="9.5">Medium(9.5 liters/min)</option>
+                                  <option value="11.3">Large(11.3 liters/min)</option>
                                   <option value="other">Other(specify)</option>
                                 </select>
                               </td>
@@ -353,10 +353,19 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Liters Per Flush (5 std. 1.6 res.)
+                                Liters Per Flush
+                              </td>
+                              <td colspan="1">
+                                <select>
+                                  <option value selected disabled>Choose</option>
+                                  <option value="13.5">Old type(13.5 liters)</option>
+                                  <option value="6">Modern(ULF) type(6 liters)</option>
+                                  <option value="5">Dual flush(5 liters)</option>
+                                  <option value="other">Other(specify)</option>
+                                </select>
                               </td>
                               <td colspan="2">
-                                <input type="text" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
+                                <input type="number" name="toiletflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
                             <tr class="nord-lightblue">
@@ -413,6 +422,14 @@
                               <td colspan="2">
                                 Liters Per Dishwasher Load
                               </td>
+                              <td colspan="1">
+                                <select>
+                                  <option value selected disabled>Choose</option>
+                                  <option value="6">Automatic(6 liters)</option>
+                                  <option value="9">Semi-Automatic(9 liters)</option>
+                                  <option value="other">Other(specify)</option>
+                                </select>
+                              </td>
                               <td colspan="2">
                                 <input type="text" name="dishwasherflow" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
                               </td>
@@ -431,7 +448,16 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                How Many Liters Each Load
+                                How Many Liters Each Load(Per tub load, choose "other" to specify any other mean)
+                              </td>
+                              <td colspan="1">
+                                <select>
+                                  <option value="" selected disabled>Choose</option>
+                                  <option value="25">Small tub(25 liters)</option>
+                                  <option value="40">Medium tub(40 liters)</option>
+                                  <option value="50">Large tub(50 liters)</option>
+                                  <option value="other">Other(specify)</option>
+                                </select>
                               </td>
                               <td colspan="2">
                                 <input type="text" name="laundryload" placeholder="Enter liters" size="3" onFocus="clear_field(this)">
