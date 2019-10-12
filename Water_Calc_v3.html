@@ -24,7 +24,6 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
-        <li><a href="walkathon.html">Walkathon</a></li>
         <li><a href="contributors.html">Contributors</a></li>
       </ul>
     </div>
@@ -32,7 +31,6 @@
 
   <ul class="sidenav" id="mobile-demo">
     <li><a href="index.html">Home</a></li>
-    <li><a href="walkathon.html">Walkathon</a></li>
     <li><a href="contributors.html">Contributors</a></li>
   </ul>
   <!-- <style media="screen">
@@ -91,53 +89,107 @@
         field.value = ''
       }
     }
-
+    var UNVERSAL_FORM_FOR_TESTING_YEET = null;
     function compute(form) {
-      var bathtotal = Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40)) / form.people.value);
-      var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value) / form.people.value);
-      var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3) / form.people.value);
-      var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value) / 7) / form.people.value);
-      var laundryday = Math.round(((form.laundry.value * form.laundryload.value) / 7) / form.people.value);
-      var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3) / form.people.value);
-
-      var carwashday = Math.round((form.car.value * form.carload.value) / form.people.value);
-
-      var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15) / 7) / form.people.value);
-      var otherday = Math.round(((form.other.value * 10) / 7) / form.people.value);
-      var indoorday = Math.round(bathtotal + toiletday + faucetday + laundryday + dishwasherday + dishday);
-      var outdoorday = Math.round(lawnday + otherday + carwashday);
-      var totalday = Math.round(indoorday + outdoorday);
-      var totalmonth = Math.round(totalday * 30.4);
-      var totalyear = Math.round(totalday * 365);
-      var DWAday = 207;
-      var DWAmonth = DWAday * 30;
-      var DWAyear = DWAday * 365;
-      form.bathtotal.value = bathtotal;
-      form.toiletday.value = toiletday;
-      form.faucetday.value = faucetday;
-      form.laundryday.value = laundryday;
-      form.dishwasherday.value = dishwasherday;
-      form.dishday.value = dishday;
-      form.carwashday.value = carwashday;
-      form.lawnday.value = lawnday;
-      form.otherday.value = otherday;
-      form.indoorday.value = indoorday;
-      form.outdoorday.value = outdoorday;
-      form.totalday.value = totalday;
-      form.totalmonth.value = totalmonth;
-      form.totalyear.value = totalyear;
-      form.DWAday.value = DWAday;
-      form.DWAmonth.value = DWAmonth;
-      form.DWAyear.value = DWAyear;
-
-      if ((form.DWAday.value - form.totalday.value) > 0) {
-
-        form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
-
-      } else {
-        form.useage.value = ("Every year, your household uses " + (form.totalyear.value - form.DWAyear.value) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
-
+      UNVERSAL_FORM_FOR_TESTING_YEET = form
+      let constants = { // All the different constants
+        // All are in liters
+        faucet:3.7,
+        bucket:10,
+        hose:55,
+        weeklyToMonthlyConstant:30.5/7 // Converting months to weeks
       }
+      let residents = form.people.value;
+      let weeklyBaths = Math.round(form.showers.value*form.showermin.value*form.showerflow.value*form.baths.value);
+      let weeklyToilet = Math.round(form.toiletflush.value*form.toiletflush.value*form.toiletflow.value * 7)// *7 for weekly because this is daily
+      let weeklyFaucet = Math.round(form.faucet.value*form.faucetmin.value*constants.faucet * 7)// *7 for weekly because this is daily
+
+      // Dishwashing has two parts, by hand and the washer
+      let weeklyHandDishWashing = Math.round(form.dishhand.value*form.dishmin.value * constants.faucet * 7) // *7 for weekly, faucet because washing needs faucet
+      let weeklyDishWasherDishWashing = Math.round(form.dishwasher.value*form.dishwasherflow.value * 7) // *7 for weekly
+      let weeklyLaundryWater = Math.round(form.laundry.value*form.laundryload.value) // doesn't need weekly because it already is weekly
+      let weeklyGardening = Math.round(form.lawn.value*form.lawnmin.value*constants.hose) // This uses the hose constant as well
+      let monthlyCarWash = Math.round((form.car.value*form.minutesBucket.value*constants.bucket+form.car.value*form.minutesHose.value*constants.hose)*form.carWashesTotal.value); // THIS IS MONTHLY SO USE IN MONTHLY ONLY
+
+      // Totals
+      // Total indoor:
+      let weeklyTotalIndoors = residents*(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)
+      // Total outdoor:
+      let weeklyTotalOutDoors = Math.round(monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening) // Montly car wash is converted to weekly with the constant
+
+      // Total overall
+      let totalDailySum = residents*Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
+      console.log(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)
+      let totalMonthlySum = Math.round(totalDailySum*30.5+monthlyCarWash) // 30.5 to get days to months
+      let totalYearlySum = Math.round(totalMonthlySum*12)
+
+      // Binding the value to the outputs
+
+      form.bathtotal.value = weeklyBaths;
+      form.lawnday.value = weeklyGardening;
+      form.toiletday.value = weeklyToilet;
+      form.faucetday.value = weeklyFaucet;
+      form.laundryday.value = weeklyLaundryWater;
+      form.dishwasherday.value = weeklyDishWasherDishWashing;
+      form.dishday.value = weeklyHandDishWashing;
+      form.carwashday.value = Math.round(monthlyCarWash/(constants.weeklyToMonthlyConstant)); // converting it to weekly
+
+      // Bind totals:
+      form.indoorday.value = weeklyTotalIndoors;
+      form.outdoorday.value = weeklyTotalOutDoors;
+
+      // Bind big totals:
+      form.totalday.value = totalDailySum;
+      form.totalmonth.value = totalMonthlySum;
+      form.totalyear.value = totalYearlySum;
+
+
+      // var bathtotal = Math.round(form.showers*form.showermin*form.showerflow)
+      // Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40)) / form.people.value);
+      // var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value) / form.people.value);
+      // var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3) / form.people.value);
+      // var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value) / 7) / form.people.value);
+      // var laundryday = Math.round(((form.laundry.value * form.laundryload.value) / 7) / form.people.value);
+      // var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3) / form.people.value);
+      //
+      // var carwashday = Math.round((form.car.value * form.carload.value) / form.people.value);
+      //
+      // var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15) / 7) / form.people.value);
+      // var otherday = Math.round(((form.other.value * 10) / 7) / form.people.value);
+      // var indoorday = Math.round(bathtotal + toiletday + faucetday + laundryday + dishwasherday + dishday);
+      // var outdoorday = Math.round(lawnday + otherday + carwashday);
+      // var totalday = Math.round(indoorday + outdoorday);
+      // var totalmonth = Math.round(totalday * 30.4);
+      // var totalyear = Math.round(totalday * 365);
+      // var DWAday = 207;
+      // var DWAmonth = DWAday * 30;
+      // var DWAyear = DWAday * 365;
+      // form.bathtotal.value = bathtotal;
+      // form.toiletday.value = toiletday;
+      // form.faucetday.value = faucetday;
+      // form.laundryday.value = laundryday;
+      // form.dishwasherday.value = dishwasherday;
+      // form.dishday.value = dishday;
+      // form.carwashday.value = carwashday;
+      // form.lawnday.value = lawnday;
+      // form.otherday.value = otherday;
+      // form.indoorday.value = indoorday;
+      // form.outdoorday.value = outdoorday;
+      // form.totalday.value = totalday;
+      // form.totalmonth.value = totalmonth;
+      // form.totalyear.value = totalyear;
+      // form.DWAday.value = DWAday;
+      // form.DWAmonth.value = DWAmonth;
+      // form.DWAyear.value = DWAyear;
+      //
+      // if ((form.DWAday.value - form.totalday.value) > 0) {
+      //
+      //   form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
+      //
+      // } else {
+      //   form.useage.value = ("Every year, your household uses " + (form.totalyear.value - form.DWAyear.value) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
+      //
+      // }
 
     }
 
@@ -249,7 +301,9 @@
     .nord-darkblue {
       color: #fff !important !important;
     }
-
+    .hidden {
+      display:none !important;
+    }
     form{
       margin-left: 20%;
       margin-right: 20%;
@@ -283,13 +337,13 @@
                             <tr class="nord-yellow" style="background-color: #FDC02D !important;">
                               <td colspan="5" align="center">
                                 <center>
-                                  <h6><b>Required data entry</b></h6>
+                                  <h6><b>Required Data Entry</b></h6>
                                 </center>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of people in residence
+                                Number Of People In Residence
                               </td>
                               <td colspan="3"><input type="text" name="people" placeholder="Enter number of people" size="3" onFocus="clear_field(this)">
                               </td>
@@ -297,25 +351,25 @@
                             <tr class="nord-yellow" style="background-color: #FDC02D !important;">
                               <td colspan="5" align="center">
                                 <center>
-                                  <h6><b>Indoor water usage</b></h6>
+                                  <h6><b>Indoor Water Usage</b></h6>
                                 </center>
                               </td>
                             </tr>
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
-                                <b> Bathroom water use </b>
+                                <b> Bathroom Water Use </b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Daily showers in the residence
+                                Daily Showers In The Residence
                               </td>
                               <td colspan="3"><input type="text" name="showers" placeholder="Enter number of daily showers" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Average shower time in minutes
+                                Average Shower Time In Minutes
                               </td>
                               <td colspan="3">
                                 <input type="text" name="showermin" placeholder="Shower time in minutes" size="3" onFocus="clear_field(this)">
@@ -323,10 +377,10 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Shower head flow rate (assume moderate flow rate (not too high or too low))
+                                Shower Head Flow Rate (Assume moderate flow rate(not too high/too low))
                               </td>
                               <td colspan="2">
-                                <select>
+                                <select class="inp-select">
                                   <option value selected disabled>Choose</option>
                                   <option value="7.5">Small(7.5 liters/min)</option>
                                   <option value="9.5">Medium(9.5 liters/min)</option>
@@ -340,7 +394,7 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Total weekly baths in residence
+                                Total Weekly Baths In Residence
                               </td>
                               <td colspan="3">
                                 <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
@@ -348,12 +402,12 @@
                             </tr>
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
-                                <b> Toilet water use </b>
+                                <b> Toilet Water Use </b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Average number of flushes daily per person
+                                Average Number Of Flushes Daily Per Person
                               </td>
                               <td colspan="3">
                                 <input type="text" name="toiletflush" placeholder="Number of flushes" size="3" onFocus="clear_field(this)">
@@ -361,10 +415,10 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Liters per flush
+                                Liters Per Flush
                               </td>
                               <td colspan="2">
-                                <select>
+                                <select class="inp-select">
                                   <option value selected disabled>Choose</option>
                                   <option value="13.5">Old type(13.5 liters)</option>
                                   <option value="6">Modern(ULF) type(6 liters)</option>
@@ -378,12 +432,12 @@
                             </tr>
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
-                                <b> Faucet water use </b>
+                                <b> Faucet Water Use </b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Average number of times each person uses faucet daily
+                                Average Number Of Times Each Person Uses Faucet Daily
                               </td>
                               <td colspan="3">
                                 <input type="text" name="faucet" placeholder="Enter number of times used" size="3" onFocus="clear_field(this)">
@@ -391,20 +445,25 @@
                             </tr>
                             <tr>
                               <td colspan="2">
+                                How Many Minutes Each Use
                               </td>
-                              Number of minutes per use
                               <td colspan="3">
                                 <input type="text" name="faucetmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr class="nord-lightblue">
+                            <tr class="nord-lightblue" style="height:69px">
                               <td align="center" colspan="5">
-                                <b> Dishwashing water use</b>
+                                <b> Dishwashing Water Use</b>
+                              </td>
+                            </tr>
+                            <tr class="light-green-custom">
+                              <td align="center" colspan="5">
+                                <b> Hand water use</b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of times dishes are hand-washed per day
+                                How Many Times Are Dishes Washed By Hand Daily
                               </td>
                               <td colspan="3">
                                 <input type="text" name="dishhand" placeholder="Enter times dish washer is used" size="3" onFocus="clear_field(this)">
@@ -412,15 +471,20 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Duration of hand washing dishes in minutes
+                                How Many Minutes Each Use
                               </td>
                               <td colspan="3">
                                 <input type="text" name="dishmin" placeholder="Enter minutes of use" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
+                            <tr class="light-green-custom">
+                              <td align="center" colspan="5">
+                                <b> Dishwasher use</b>
+                              </td>
+                            </tr>
                             <tr>
                               <td colspan="2">
-                                Number of dishwasher loads per week
+                                How Many Dishwasher Loads Each Week
                               </td>
                               <td colspan="3">
                                 <input type="text" name="dishwasher" placeholder="Enter weekly loads" size="3" onFocus="clear_field(this)">
@@ -428,10 +492,10 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of liters per dishwasher load
+                                Liters Per Dishwasher Load
                               </td>
                               <td colspan="2">
-                                <select>
+                                <select class="inp-select">
                                   <option value selected disabled>Choose</option>
                                   <option value="6">Automatic(6 liters)</option>
                                   <option value="9">Semi-Automatic(9 liters)</option>
@@ -449,17 +513,17 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of loads of laundry per week
+                                How Many Loads Of Laundry Each Week
                               </td>
                               <td colspan="3"><input type="text" name="laundry" placeholder="Enter loads" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of liters per laundry tub load
+                                How Many Liters Each Load(Per tub load, choose "other" to specify any other means)
                               </td>
                               <td colspan="2">
-                                <select>
+                                <select class="inp-select">
                                   <option value="" selected disabled>Choose</option>
                                   <option value="25">Small tub(25 liters)</option>
                                   <option value="40">Medium tub(40 liters)</option>
@@ -474,42 +538,71 @@
                             <tr class="nord-yellow" style="background-color: #FDC02D !important;">
                               <td colspan="5" align="center">
                                 <center>
-                                  <h6><b>Outdoor water usage</b></h6>
+                                  <h6><b>Outdoor Water Usage</b></h6>
                                 </center>
                               </td>
                             </tr>
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
-                                <b> Car wash</b>
+                                <b> Car Wash</b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of cars
+                                How Many Cars you have
                               </td>
                               <td colspan="3"><input type="text" name="car" placeholder="Number of cars" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of buckets of water used for one car wash
+                                Monthly number of car washes
                               </td>
-                              <td colspan="3">
-                                <input type="text" name="carload" placeholder="Number of buckets used" size="3" onFocus="clear_field(this)">
+                              <td colspan="3"><input type="text" name="carWashesTotal" placeholder="Number of car washes each month" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-
+                            <tr>
+                              <td align="center" colspan="2">
+                                <b> Car Wash type:</b>
+                              </td>
+                              <td colspan="3">
+                                <select class="dynamic-select">
+                                  <option value="" selected disabled>Choose</option>
+                                  <option value="bucket">Buckets(10 liters/use)</option>
+                                  <option value="hose">Hose(Avg. 55 liters/min)</option>
+                                </select>
+                              </td>
+                              <!-- <td colspan="1">
+                                &nbsp;
+                              </td> -->
+                            </tr>
+                            <tr class="dynamic-selectable" show-on="bucket">
+                              <td colspan="2">
+                                How Many buckets of water you use
+                              </td>
+                              <td colspan="3">
+                                <input type="text" name="minutesBucket" placeholder="Number of buckets used" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
+                            <tr class="dynamic-selectable" show-on="hose">
+                              <td colspan="2">
+                                How Many minutes you use hose?
+                              </td>
+                              <td colspan="3">
+                                <input type="text" name="minutesHose" placeholder="Enter hose liters" size="3" onFocus="clear_field(this)">
+                              </td>
+                            </tr>
                             <tr class="nord-lightblue">
 
                             </tr>
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
-                                <b> Lawn water use</b>
+                                <b>Gardening water usage</b>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Number of times lawn is watered per week
+                                How Many Times Is The Garden/Lawn Watered Each Week
                               </td>
                               <td colspan="3">
                                 <input type="text" name="lawn" placeholder="Enter number of uses" size="3" onFocus="clear_field(this)">
@@ -517,20 +610,20 @@
                             </tr>
                             <tr>
                               <td colspan="2">
-                                Duration of time lawn is watered in minutes
+                                For How Many Minutes Each Time
                               </td>
                               <td colspan="3">
                                 <input type="text" name="lawnmin" placeholder="Minutes of usage" size="3" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                               <td colspan="2">
-                                Duration of other lawn water use in minutes:
+                                How Many Minutes For Other Outdoor Use Each Week
                               </td>
                               <td colspan="3">
                                 <input type="text" name="other" placeholder='Enter minutes' size="3" onFocus="clear_field(this)">
                               </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                               <td align="center" colspan="5" class="nord-red">
                                 <center>
@@ -560,7 +653,7 @@
                     </tr>
                     <tr>
                       <td colspan="3">
-                        Lawn watering
+                        Lawn Watering
                       </td>
                       <td colspan="2">
                         <input type="text" name="lawnday" value="" size="4" readonly>
@@ -574,14 +667,14 @@
                         <input type="text" name="toiletday" value="" size="4" readonly>
                       </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td colspan="3">
-                        Other outdoor uses
+                        Other Outdoor Uses
                       </td>
                       <td colspan="2">
                         <input type="text" name="otherday" value="" size="4" readonly>
                       </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                       <td colspan="3">
                         Faucets
@@ -608,14 +701,14 @@
                     </tr>
                     <tr>
                       <td colspan="3">
-                        Hand washing dishes
+                        Hand Washing Dishes
                       </td>
                       <td colspan="2">
                         <input type="text" name="dishday" value="" size="4" readonly></td>
                     </tr>
                     <tr>
                       <td colspan="3">
-                        Car washing
+                        Car Washing
                       </td>
                       <td colspan="2">
                         <input type="text" name="carwashday" value="" size="4" readonly></td>
@@ -623,7 +716,7 @@
                     <tr class="nord-yellow" style="background-color: #FDC02D !important;">
                       <td colspan="5" align="center">
                         <center>
-                          <h6><b><i>Total  consumption</i></b></h6>
+                          <h6><b><i>TOTAL CONSUMPTION</i></b></h6>
                         </center>
                       </td>
                     </tr>
@@ -633,11 +726,11 @@
                     </tr> -->
 
                     <tr>
-                      <td colspan="3"><I>Interior</I> per capita liters per day</td>
+                      <td colspan="3"><I>Interior</I> per capita Liters per day</td>
                       <td align="center" colspan="2"><input type="text" name="indoorday" value="" size="4" readonly></td>
                     </tr>
                     <tr>
-                      <td colspan="3"><I>Exterior</I> per capita liters per day</td>
+                      <td colspan="3"><I>Exterior</I> per capita Liters per day</td>
                       <td align="center" colspan="2"><input type="text" name="outdoorday" value="" size="4"></td>
                     </tr>
                     <tr>
@@ -645,7 +738,7 @@
                       <tr class="nord-yellow">
                         <td colspan="5" align="center">
                           <center>
-                          <b><i>Total per capita liters used</i></b>
+                          <b><i>Total Per Capita Liters Used</i></b>
                           </center>
                         </td>
                       </tr>
@@ -711,7 +804,19 @@
       $.fn.jQArray = function() {
         return this.toArray().map(e => $(e))
       }
-      $('select').each(function(e, k) {
+      // class="inp-select"
+      $('select.dynamic-select').each(function(e,k){
+        k = $(k);
+        let parent = k.parents("tr").eq(1);
+        let dynSelectables = parent.find('.dynamic-selectable')
+        dynSelectables.addClass("hidden");
+        k.on("change",(e) => {
+          parent.find(`.dynamic-selectable[show-on=${k.val()}]`).removeClass('hidden');
+          parent.find(`.dynamic-selectable:not([show-on=${k.val()}])`).addClass('hidden');
+        })
+        // console.log(dynSelectables)
+      })
+      $('select.inp-select').each(function(e, k) {
         k = $(k);
         let input = k.parents("tr").eq(0).find("input:not(.select-dropdown)")
         // console.log(input)
