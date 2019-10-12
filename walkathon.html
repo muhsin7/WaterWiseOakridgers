@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<title>Water Conservation</title>
+<link rel="shortcut icon" type="image/png" href="Images/Logo.png" />
+<script src="js/jquery.js" charset="utf-8"></script>
+<script src="js/script.js" charset="utf-8"></script>
+
+<head>
+    <header>
+        <span class="st_sharethis" st_url="https://waterwiseoakridgers.cf" st_title="Water Wise Oakridgers" st_image="/Images/meta_banner.png" st_summary="Be wise about water. Calculate your water usage and take a pledge to save water! Water Wise Oakridgers - An initiative by the students of Oakridge International School, Bangalore"></span>
+    </header>
+    <meta property="og:title" content="Water Wise Oakridgers" />
+    <meta property="og:url" content="https://waterwiseoakridgers.cf" />
+    <meta property="og:image" content="/Images/meta_banner.png" />
+    <meta property="og:description" content="Be wise about water. Calculate your water usage and take a pledge to save water! Water Wise Oakridgers - An initiative by the students of Oakridge International School, Bangalore" />
+    <meta property="og:site_name" content="Water Wise Oakridgers" />
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5d8c9c76ce8de10012cf0647' async='async'></script>
+  <style>
+    h1 {
+      background-color: #FDC02D;
+      color: #003255;
+      font-style: italic;
+    }
+  </style>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/nord-colours.css" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="Water_Calc_v3.html">Water Usage Calculator</a></li>
+        <li><a href="contributors.html">Contributors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="Water_Calc_v3.html">Water Usage Calculator</a></li>
+    <li><a href="contributors.html">Contributors</a></li>
+  </ul>
+
+  <!-- <nav class="nord-darkblue" style="position: fixed; z-index: 3;">
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo"><img src="Images/Logo.png" style="width:10%; height:10%;" /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#work">Student Work</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="contributors.html">Contributors</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+  <style media="screen">
+    .download-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .download-container a {
+      margin-left: 20px;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: #008CBA;
+    }
+
+    .overlaytext {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+
+    .container:hover .overlay {
+      opacity: 1;
+    }
+  </style>
+
+</head>
+
+<body class="nord-lightgrey" style="background-color: white;">
+  <style media="screen">
+    .pledge-container {
+      display: none
+    }
+  </style>
+
+
+
+  <div class="parallax-container" style="height: 600px;">
+    <div class="parallax"><img src="Images/walk_bg.jpg" style="width: auto; height: auto; max-width: 100%; opacity: 100 !important"></div>
+    <div class="container" style="position: relative; top: 35vh; right: 15vh;">
+      <div class="row">
+        <div class="col s12">
+          <img width="100%" height="120%" src="Images/walkathon_text.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+      #clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+  }
+
+  #clockdiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;}
+
+  .smalltext{
+    font-size: 20px;
+    color: rbg(255, 255, 255) !important;
+  }
+}
+
+  </style>
+  <body class="nord-lightgrey">
+
+    <div class="container">
+      <div class="row">
+        <center>
+          <h1>About the event</h1>
+          </center>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="row">
+          <center>
+            <h1>Coming Soon!</h1>
+              <div class="container">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div id="clockdiv">
+                            <div style="display: inline-block">
+                                <span class="days light-blue darken-4"></span>
+                                <div class="smalltext">Days</div>
+                            </div>
+                            &nbsp; &nbsp; &nbsp;
+                            <div style="display: inline-block">
+                                <span class="hours light-blue darken-4"></span>
+                                <div class="smalltext">Hours</div>
+                            </div>
+                            &nbsp; &nbsp; &nbsp;
+                            <div style="display: inline-block">
+                                <span class="minutes light-blue darken-4"></span>
+                                <div class="smalltext">Minutes</div>
+                            </div>
+                            &nbsp; &nbsp;
+                            <div style="display: inline-block">
+                                <span class="seconds light-blue darken-4">00</span>
+                                <div class="smalltext">Seconds</div>
+                            </div>
+                            <!-- &nbsp; &nbsp; &nbsp; -->
+                        </div>
+                    </div>
+                </div>
+                <i><h6>Dates are subject to change.</h6></i>
+              </div>
+            </center>
+        </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+  </body>
+
+  <footer class="page-footer black" style="margin-top:20px">
+    <div class="container">
+      <div class="row" style="margin-bottom: 0px;">
+        <div class="col s5 right">
+          Developed by <a href="https://github.com/muhsin7" target="_blank">Muhsin7</a>, <a href="https://github.com/Teminix" target="_blank">Teminix</a> and <a href="https://github.com/Chanmanstanflan" target="_blank">Chanmanstanflan</a>
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    // INITIALIZING MATERIALIZE ELEMENTS
+
+    ////////////////////////////
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   var elems = document.querySelectorAll('.modal');
+    //   var instances = M.Modal.init(elems, options);
+    // });
+
+    // Or with jQuery
+
+    $(document).ready(function() {
+      $('.modal').modal();
+    });
+
+    $(document).ready(function() {
+      $('.tooltipped').tooltip();
+    });
+    ////////////////////////////
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   var elems = document.querySelectorAll('.sidenav');
+    //   var instances = M.Sidenav.init(elems, options);
+    // });
+
+    // Or with jQuery
+
+
+    // var instance = M.Tabs.init(el, options);
+
+    // Or with jQuery
+
+    $(document).ready(function() {
+      $('.tabs').tabs();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function() {
+      $('.tabs').tabs();
+    });
+
+
+
+    $(document).ready(function() {
+      $('.parallax').parallax();
+    });
+
+
+    $(document).ready(function() {
+      $('.carousel').carousel();
+    });
+
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true,
+      dist: 0
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+
+function getTimeRemaining(endtime) {
+    var t = Date.parse(endtime) - Date.parse(new Date());
+    var seconds = Math.floor((t / 1000) % 60);
+    var minutes = Math.floor((t / 1000 / 60) % 60);
+    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+    };
+}
+
+function initializeClock(id, endtime) {
+    var clock = document.getElementById(id);
+    var daysSpan = clock.querySelector('.days');
+    var hoursSpan = clock.querySelector('.hours');
+    var minutesSpan = clock.querySelector('.minutes');
+    var secondsSpan = clock.querySelector('.seconds');
+
+    function updateClock() {
+        var t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+        }
+    }
+
+    updateClock();
+    var timeinterval = setInterval(updateClock, 1000);
+}
+setTimeout(function () {
+  $('#bigbtn1')[0].classList.remove("pulse")
+  $('#bigbtn2')[0].classList.remove("pulse")
+  $('#noticeicon')[0].classList.remove("pulse")
+}, 5000);
+var deadline = 'November 30 2019 08:00:00 GMT+0530';
+initializeClock('clockdiv', deadline);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tap-target');
+    var instances = M.TapTarget.init(elems, options);
+  });
+</script>
+</html>
