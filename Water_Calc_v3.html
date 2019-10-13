@@ -96,30 +96,34 @@
         // All are in liters
         faucet:3.7,
         bucket:10,
-        hose:55,
+        hose:10,
         weeklyToMonthlyConstant:30.5/7 // Converting months to weeks
       }
       let residents = form.people.value;
-      let weeklyBaths = Math.round(form.showers.value*form.showermin.value*form.showerflow.value*form.baths.value);
-      let weeklyToilet = Math.round(form.toiletflush.value*form.toiletflush.value*form.toiletflow.value * 7)// *7 for weekly because this is daily
-      let weeklyFaucet = Math.round(form.faucet.value*form.faucetmin.value*constants.faucet * 7)// *7 for weekly because this is daily
+      let weeklyBaths = residents*Math.round(form.showers.value*form.showermin.value*form.showerflow.value*7/*form.baths.value*/); // Instead of taking number of baths, just assume 7 times
 
+      let weeklyToilet = residents*Math.round(form.toiletflush.value*form.toiletflow.value * 7)// *7 for weekly because this is daily
+      let weeklyFaucet = residents*Math.round(form.faucet.value*form.faucetmin.value*constants.faucet * 7)// *7 for weekly because this is daily
+      // NOT ALL VALUES NEED RESIDENTS TO BE CONSIDERED
       // Dishwashing has two parts, by hand and the washer
       let weeklyHandDishWashing = Math.round(form.dishhand.value*form.dishmin.value * constants.faucet * 7) // *7 for weekly, faucet because washing needs faucet
       let weeklyDishWasherDishWashing = Math.round(form.dishwasher.value*form.dishwasherflow.value * 7) // *7 for weekly
       let weeklyLaundryWater = Math.round(form.laundry.value*form.laundryload.value) // doesn't need weekly because it already is weekly
       let weeklyGardening = Math.round(form.lawn.value*form.lawnmin.value*constants.hose) // This uses the hose constant as well
+      // console.log(form.lawn.value);
+      // console.log(form.lawnmin.value);
+      // console.log(constants.hose);
       let monthlyCarWash = Math.round((form.car.value*form.minutesBucket.value*constants.bucket+form.car.value*form.minutesHose.value*constants.hose)*form.carWashesTotal.value); // THIS IS MONTHLY SO USE IN MONTHLY ONLY
 
       // Totals
       // Total indoor:
-      let weeklyTotalIndoors = residents*(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)
+      let weeklyTotalIndoors = (weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)
       // Total outdoor:
       let weeklyTotalOutDoors = Math.round(monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening) // Montly car wash is converted to weekly with the constant
 
       // Total overall
       let totalDailySum = residents*Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
-      console.log(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)
+      // console.log(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)
       let totalMonthlySum = Math.round(totalDailySum*30.5+monthlyCarWash) // 30.5 to get days to months
       let totalYearlySum = Math.round(totalMonthlySum*12)
 
@@ -144,56 +148,61 @@
       form.totalyear.value = totalYearlySum;
 
 
-      // var bathtotal = Math.round(form.showers*form.showermin*form.showerflow)
-      // Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40)) / form.people.value);
-      // var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value) / form.people.value);
-      // var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3) / form.people.value);
-      // var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value) / 7) / form.people.value);
-      // var laundryday = Math.round(((form.laundry.value * form.laundryload.value) / 7) / form.people.value);
-      // var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3) / form.people.value);
-      //
-      // var carwashday = Math.round((form.car.value * form.carload.value) / form.people.value);
-      //
-      // var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15) / 7) / form.people.value);
-      // var otherday = Math.round(((form.other.value * 10) / 7) / form.people.value);
-      // var indoorday = Math.round(bathtotal + toiletday + faucetday + laundryday + dishwasherday + dishday);
-      // var outdoorday = Math.round(lawnday + otherday + carwashday);
-      // var totalday = Math.round(indoorday + outdoorday);
-      // var totalmonth = Math.round(totalday * 30.4);
-      // var totalyear = Math.round(totalday * 365);
-      // var DWAday = 207;
-      // var DWAmonth = DWAday * 30;
-      // var DWAyear = DWAday * 365;
-      // form.bathtotal.value = bathtotal;
-      // form.toiletday.value = toiletday;
-      // form.faucetday.value = faucetday;
-      // form.laundryday.value = laundryday;
-      // form.dishwasherday.value = dishwasherday;
-      // form.dishday.value = dishday;
-      // form.carwashday.value = carwashday;
-      // form.lawnday.value = lawnday;
-      // form.otherday.value = otherday;
-      // form.indoorday.value = indoorday;
-      // form.outdoorday.value = outdoorday;
-      // form.totalday.value = totalday;
-      // form.totalmonth.value = totalmonth;
-      // form.totalyear.value = totalyear;
-      // form.DWAday.value = DWAday;
-      // form.DWAmonth.value = DWAmonth;
-      // form.DWAyear.value = DWAyear;
-      //
-      // if ((form.DWAday.value - form.totalday.value) > 0) {
-      //
-      //   form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
-      //
-      // } else {
-      //   form.useage.value = ("Every year, your household uses " + (form.totalyear.value - form.DWAyear.value) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
-      //
-      // }
+      /*
+      OLD CODE:
+      var bathtotal = Math.round(form.showers*form.showermin*form.showerflow)
+      Math.round(((form.showers.value * form.showermin.value * form.showerflow.value) + (form.baths.value / 7 * 40)) / form.people.value);
+      var toiletday = Math.round((form.people.value * form.toiletflow.value * form.toiletflush.value) / form.people.value);
+      var faucetday = Math.round((form.faucet.value * form.people.value * form.faucetmin.value * 3) / form.people.value);
+      var dishwasherday = Math.round(((form.dishwasher.value * form.dishwasherflow.value) / 7) / form.people.value);
+      var laundryday = Math.round(((form.laundry.value * form.laundryload.value) / 7) / form.people.value);
+      var dishday = Math.round((form.dishhand.value * form.dishmin.value * 3) / form.people.value);
+
+      var carwashday = Math.round((form.car.value * form.carload.value) / form.people.value);
+
+      var lawnday = Math.round(((form.lawn.value * form.lawnmin.value * 15) / 7) / form.people.value);
+      var otherday = Math.round(((form.other.value * 10) / 7) / form.people.value);
+      var indoorday = Math.round(bathtotal + toiletday + faucetday + laundryday + dishwasherday + dishday);
+      var outdoorday = Math.round(lawnday + otherday + carwashday);
+      var totalday = Math.round(indoorday + outdoorday);
+      var totalmonth = Math.round(totalday * 30.4);
+      var totalyear = Math.round(totalday * 365);
+      var DWAday = 207;
+      var DWAmonth = DWAday * 30;
+      var DWAyear = DWAday * 365;
+      form.bathtotal.value = bathtotal;
+      form.toiletday.value = toiletday;
+      form.faucetday.value = faucetday;
+      form.laundryday.value = laundryday;
+      form.dishwasherday.value = dishwasherday;
+      form.dishday.value = dishday;
+      form.carwashday.value = carwashday;
+      form.lawnday.value = lawnday;
+      form.otherday.value = otherday;
+      form.indoorday.value = indoorday;
+      form.outdoorday.value = outdoorday;
+      form.totalday.value = totalday;
+      form.totalmonth.value = totalmonth;
+      form.totalyear.value = totalyear;
+      form.DWAday.value = DWAday;
+      form.DWAmonth.value = DWAmonth;
+      form.DWAyear.value = DWAyear;
+
+      if ((form.DWAday.value - form.totalday.value) > 0) {
+
+        form.useage.value = ("Every year, your household uses " + (form.DWAyear.value - form.totalyear.value) + " Liters per capita LESS than the Desert Water Agency per capita water useage.");
+
+      } else {
+        form.useage.value = ("Every year, your household uses " + (form.totalyear.value - form.DWAyear.value) + " Liters per capita MORE than the Desert Water Agency per capita water useage.");
+
+      }*/
 
     }
 
     function ClearForm(form) {
+      $('form').eq(0).find('input[type=text],input[type=number]').filter((e,k)=>k.classList.length==0).val('')
+      /*
+      OLD code:
       form.bathtotal.value = "";
       form.toiletday.value = "";
       form.faucetday.value = "";
@@ -227,7 +236,7 @@
       form.lawn.value = "";
       form.lawnmin.value = "";
       form.other.value = "";
-      form.showermin.value = "";
+      form.showermin.value = "";*/
 
     }
     //  -->
@@ -392,14 +401,14 @@
                                 <input type="number" name="showerflow" size="3" placeholder="Flow rate" onFocus="clear_field(this)">
                               </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                               <td colspan="2">
                                 Total Weekly Baths In Residence
                               </td>
                               <td colspan="3">
                                 <input type="text" name="baths" placeholder="Total weekly baths" size="3" onFocus="clear_field(this)">
                               </td>
-                            </tr>
+                            </tr> -->
                             <tr class="nord-lightblue">
                               <td align="center" colspan="5">
                                 <b> Toilet Water Use </b>
