@@ -119,13 +119,14 @@
       let monthlyCarWash = Math.round((form.car.value*form.minutesBucket.value*constants.bucket+form.car.value*form.minutesHose.value*constants.hose)*form.carWashesTotal.value); // THIS IS MONTHLY SO USE IN MONTHLY ONLY
 
       // Totals
-      // Total indoor:
-      let weeklyTotalIndoors = (weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)
-      // Total outdoor:
-      let weeklyTotalOutDoors = Math.round(monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening) // Montly car wash is converted to weekly with the constant
-
+      // Total indoor PER CAPITA REQUIRED:
+      let weeklyTotalIndoors = Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)/residents)
+      // Total outdoor PER CAPITA REQUIRED:
+      let weeklyTotalOutDoors = Math.round((monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening)/residents) // Montly car wash is converted to weekly with the constant
+      console.log((weeklyTotalIndoors+weeklyTotalOutDoors)*residents)
       // Total overall
-      let totalDailySum = residents*Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
+      // let totalDailySum = Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
+      let totalDailySum = Math.round((weeklyTotalIndoors+weeklyTotalOutDoors))
       // console.log(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)
       let totalMonthlySum = Math.round(totalDailySum*30.5+monthlyCarWash) // 30.5 to get days to months
       let totalYearlySum = Math.round(totalMonthlySum*12)
