@@ -399,9 +399,9 @@
 
     // Or with jQuery
 
-    $(document).ready(function() {
-      $('.tabs').tabs();
-    });
+    // $(document).ready(function() {
+    //   $('.tabs').tabs();
+    // });
 
 
 
@@ -420,10 +420,10 @@
       dist: 0
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, options);
-});
+//     document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.sidenav');
+//   var instances = M.Sidenav.init(elems, options);
+// });
 
 // Or with jQuery
 
@@ -431,5 +431,13 @@ $(document).ready(function(){
   $('.sidenav').sidenav();
 });
   </script>
+  <style media="screen">
+    .tabs .indicator {
+      display:none
+    }
+    .tabs .tab a.active {
+      border-bottom:2px white solid;
+    }
+  </style>
 
 </html>

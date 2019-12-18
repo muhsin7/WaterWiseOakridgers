@@ -24,6 +24,8 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
+        <li><a href="home.html#about">About Us</a></li>
+        <li><a href="home.html#work">Student Work</a></li>
         <li><a href="contributors.html">Contributors</a></li>
         <!-- <li><a href="walkathon.html">Walkathon</a></li> -->
         <li><a href="https://padlet.com/chetna_kachhwaha2/7to2i3uszdlf" target="_blank">Add Contributions</a></li>
@@ -95,6 +97,10 @@
     }
     var UNVERSAL_FORM_FOR_TESTING_YEET = null;
     function compute(form) {
+      $(form).find('[type=number]:not([readonly])').each((e,k) => {
+        k = $(k);
+        if(k.val().trim() == '') k.val(0)
+      })
       UNVERSAL_FORM_FOR_TESTING_YEET = form
       let constants = { // All the different constants
         // All are in liters
@@ -120,13 +126,14 @@
       let monthlyCarWash = Math.round((form.car.value*form.minutesBucket.value*constants.bucket+form.car.value*form.minutesHose.value*constants.hose)*form.carWashesTotal.value); // THIS IS MONTHLY SO USE IN MONTHLY ONLY
 
       // Totals
-      // Total indoor:
-      let weeklyTotalIndoors = (weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)
-      // Total outdoor:
-      let weeklyTotalOutDoors = Math.round(monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening) // Montly car wash is converted to weekly with the constant
-
+      // Total indoor PER CAPITA REQUIRED:
+      let weeklyTotalIndoors = Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyDishWasherDishWashing+weeklyLaundryWater)/residents)
+      // Total outdoor PER CAPITA REQUIRED:
+      let weeklyTotalOutDoors = Math.round((monthlyCarWash/(constants.weeklyToMonthlyConstant)+weeklyGardening)/residents) // Montly car wash is converted to weekly with the constant
+      console.log((weeklyTotalIndoors+weeklyTotalOutDoors)*residents)
       // Total overall
-      let totalDailySum = residents*Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
+      // let totalDailySum = Math.round((weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)/7);
+      let totalDailySum = Math.round((weeklyTotalIndoors+weeklyTotalOutDoors))
       // console.log(weeklyBaths+weeklyToilet+weeklyFaucet+weeklyHandDishWashing+weeklyLaundryWater+weeklyGardening)
       let totalMonthlySum = Math.round(totalDailySum*30.5+monthlyCarWash) // 30.5 to get days to months
       let totalYearlySum = Math.round(totalMonthlySum*12)
@@ -150,8 +157,10 @@
       form.totalday.value = totalDailySum;
       form.totalmonth.value = totalMonthlySum;
       form.totalyear.value = totalYearlySum;
-
-
+      $(form).find('[readonly]').each((e,k) => {
+        k = $(k);
+        if(k.val().trim() == "NaN") k.val("0")
+      })
       /*
       OLD CODE:
       var bathtotal = Math.round(form.showers*form.showermin*form.showerflow)
@@ -253,7 +262,6 @@
 
   <div class="container">
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style TYPE="text/css">
       /* body { font-family: Tahoma, Verdana; } */
       input.btn {
@@ -296,17 +304,6 @@
         </tr>
         </table>
     </div>
-
-    <tr>
-      <td colspan="3"><br />
-        <div align="center">
-
-          <!-- Everyday Top Link Unit -->
-          <ins class="adsbygoogle" style="display:inline-block;width:728px;height:15px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3941508269"></ins>
-
-        </div>
-      </td>
-    </tr>
     </table>
   </div>
 
@@ -653,7 +650,7 @@
                             <tr class="nord-yellow" style="background-color: #FDC02D !important;">
                               <td colspan="5" align="center">
                                 <center>
-                                  <h6><b>Calculated results</b></h6>
+                                  <h6><b>Calculated results(Overall usage, weekly)</b></h6>
                                 </center>
                               </td>
                             </tr>
@@ -744,7 +741,7 @@
                     </tr>
                     <tr>
                       <td colspan="3"><I>Exterior</I> per capita Liters per day</td>
-                      <td align="center" colspan="2"><input type="text" name="outdoorday" value="" size="4"></td>
+                      <td align="center" colspan="2"><input type="text" name="outdoorday" value="" size="4" readonly></td>
                     </tr>
                     <tr>
                       <!-- <td width="150">&nbsp;</td> -->
@@ -791,13 +788,6 @@
   </tr>
   </table>
 
-  <!-- <div align="center">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8018289210612122" data-ad-slot="3358458988"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script> -->
-  </div>
 
     </td>
     </td>
@@ -851,6 +841,9 @@
           }
         })
       })
+    })
+    $(() => {
+      $('[type=text]:not(.select-dropdown)').attr("type","number")
     })
   </script>
   <script>
